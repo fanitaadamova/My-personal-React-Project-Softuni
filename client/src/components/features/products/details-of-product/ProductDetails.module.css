@@ -1,0 +1,85 @@
+.details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #fff;
+    text-align: center;
+    padding: 50px 20px 20px 20px;
+    border: #48ca95 solid 1px;
+    border-radius: 15px;
+}
+
+.image{
+    width: 20em;
+    height: auto;
+}
+
+
+
+.picture {
+    flex: 1 1 25%;
+
+}
+
+.content
+ {
+    flex: 1 1 65%;
+
+}
+
+.details h3 {
+    color: #121010;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: bold;
+    padding-bottom: 25px;
+}
+
+.details p {
+    font-size: 17px;
+    color: #050505;
+    line-height: 30px;
+}
+
+.details i {
+    padding-bottom: 25px;
+    display: block;
+}
+
+
+
+.product_info {
+    padding: 10em 10em 5em 10em;
+}
+
+
+
+
+.edit, 
+.delete {
+    font-size: 15px;
+    background-color: #48ca95;
+    color: #fff !important;
+    padding: 5px 0px;
+    width: 100%;
+    max-width: 120px;
+    text-align: center;
+    display: inline-block;
+    transition: ease-in all 0.5s;
+    font-weight: 500;
+    margin: 1.5em;
+    border-radius: 0.3em;
+}
+
+.delete{
+    background-color: brown;
+}
+
+
+.edit:hover ,
+.delete:hover
+{
+    background: #000;
+    color: #fff;
+    transition: ease-in all 0.5s;
+}
