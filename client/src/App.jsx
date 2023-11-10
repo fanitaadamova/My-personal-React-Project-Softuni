@@ -8,7 +8,7 @@ import Catalog from './components/features/products/catalog/Catalog';
 import AddProduct from './components/features/products/add-new-product/AddProduct';
 import ProductDetails from './components/features/products/details-of-product/ProductDetails';
 import HomeProducts from './components/features/home/HomeProducts';
-import NotFound from './components/features/NotFound/NotFound';
+import NotFound from './components/features/not-found/NotFound';
 import Laptops from './components/features/home/laptops/Laptops';
 import Tablets from './components/features/home/tablets/Tablets';
 import Phones from './components/features/home/phones/Phones';

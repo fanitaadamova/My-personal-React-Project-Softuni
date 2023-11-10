@@ -16,7 +16,7 @@
     line-height: 55px;
     font-weight: bold;
     padding: 0;
-    text-transform: uppercase;
+ 
     border-bottom: #48ca95 solid 1px;
     max-width: 315px;
     margin: auto;
@@ -87,4 +87,7 @@
     opacity: 1;
 }
 
-
+label{
+    color: #fff;
+    font-size: 1.5em;
+}
