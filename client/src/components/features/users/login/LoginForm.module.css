@@ -64,15 +64,15 @@
     font-size: 22px;
     transition: ease-in all 0.5s;
     background-color: #48ca95;
-    text-transform: uppercase;
+
     color: #fff;
     padding: 15px 0px;
-    max-width: 226px;
+    max-width: 176px;
     width: 100%;
     display: block;
     margin-top: 30px !important;
     margin: 0 auto;
-    border-radius: 40px;
+    border-radius: 10px;
     font-weight: 500;
 }
 
@@ -90,4 +90,36 @@
 label{
     color: #fff;
     font-size: 1.5em;
+}
+
+.no_profile{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.no_profile p{
+    padding: 1.5em;
+    color: #fff;
+    font-size: 22px;
+}
+
+.no_profile a{
+    padding: 1.2em;
+    color: #48ca95;
+    font-size: 22px;
+    text-decoration: underline !important;
+}
+.no_profile a:hover{
+    color: #fff;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 1.5em;
+    margin: 0 0 20px 0;
+}
+
+.inputError {
+    border: 1px solid red;
 }
