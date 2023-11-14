@@ -13,23 +13,10 @@ const formInitialState = {
 
 
 export default function RegisterForm() {
-  // const emailInputRef = useRef();
-  // const passwordInputRef = useRef();
-  // const usernameInputRef = useRef();
-  // const rePasswordInputRef = useRef();
   const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
   const [errors, setErrors] = useState({});
 
-  // useEffect(() => {
-  //   emailInputRef.current.focus();
-  //   passwordInputRef.current.focus();
-  //   usernameInputRef.current.focus();
-  //   rePasswordInputRef.current.focus();
-  // }, []);
-
-
-  // Executes only on update
   useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
@@ -139,7 +126,6 @@ export default function RegisterForm() {
                   <label htmlFor="username">Потребителско име:</label>
                   <input
                     className={styles.contactus}
-                    // ref={usernameInputRef}
                     type="type"
                     name="username"
                     id="username"
@@ -156,7 +142,6 @@ export default function RegisterForm() {
                   <label htmlFor="email">E-mail адрес:</label>
                   <input
                     className={styles.contactus}
-                    // ref={emailInputRef}
                     type="type"
                     name="email"
                     id="email"
@@ -187,7 +172,6 @@ export default function RegisterForm() {
                   <label htmlFor="password">Парола:</label>
                   <input
                     className={styles.contactus}
-                    // ref={passwordInputRef}
                     type="type"
                     name="password"
                     id="password"
@@ -204,7 +188,6 @@ export default function RegisterForm() {
                   <label htmlFor="rePassword">Повтори парола:</label>
                   <input
                     className={styles.contactus}
-                    // ref={rePasswordInputRef}
                     type="type"
                     name="rePassword"
                     id="rePassword"
@@ -221,9 +204,7 @@ export default function RegisterForm() {
 
                   <button className={styles.send_btn} type="submit"
                     disabled={(Object.values(errors).some(x => x)
-                      || (formValues.email == '' || formValues.username == ''
-                        || formValues.password == ''
-                        || formValues.rePassword == ''))}
+                      || (Object.values(formValues).some(x => x == '')))}
                   >Регистрирай се</button>
                   <div className={styles.go_to_profile}>
                     <p>Имаш профил?</p>

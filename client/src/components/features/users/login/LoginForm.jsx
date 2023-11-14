@@ -10,14 +10,13 @@ const formInitialState = {
 
 export default function LoginForm() {
   // const emailInputRef = useRef();
-  // const passwordInputRef = useRef();
   const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
   const [errors, setErrors] = useState({});
 
+  // за фокусиране на полето при зареждане на страницата
   // useEffect(() => {
   //   emailInputRef.current.focus();
-  //   passwordInputRef.current.focus();
   // }, []);
 
 
@@ -34,7 +33,6 @@ export default function LoginForm() {
 
 
 
-  //Validaton logic
   useEffect(() => {
     if (!isMountedRef.current) {
       isMountedRef.current = true;
@@ -142,7 +140,6 @@ export default function LoginForm() {
                   <label htmlFor="password">Парола:</label>
                   <input
                     className={styles.contactus}
-                    // ref={passwordInputRef}
                     type="type"
                     name="password"
                     id="password"

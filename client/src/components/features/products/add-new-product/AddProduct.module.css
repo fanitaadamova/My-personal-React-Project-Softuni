@@ -91,5 +91,15 @@
 .label {
     color: black;;
     font-size: 20px;
-    text-transform: uppercase;
+   
+}
+
+.errorMessage {
+    color: red;
+    font-size: 1.5em;
+    margin: 0 0 20px 0;
+}
+
+.inputError {
+    border: 1px solid red;
 }

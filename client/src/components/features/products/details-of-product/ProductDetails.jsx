@@ -3,22 +3,30 @@ import * as techniqueAPI from '../../../../api/techniqueAPI';
 
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import Loader from '../../../shared/Loader';
 
-export default function ProductDetails() {   
-    const { productId } = useParams(); 
+export default function ProductDetails() {
+    const [isLoading, setIsLoading] = useState(false);
+    const { productId } = useParams();
     const [productDetails, setProductDetails] = useState({});
 
     useEffect(() => {
         techniqueAPI.getOne(productId)
-            .then(result => setProductDetails(result));
+            .then(result => setProductDetails(result))
+            .catch(err => console.log(err))
+            .finally(() => setIsLoading(false));
+
     }, [productId]);
 
 
     return (
         <div className={styles.product_info}>
+            {isLoading && < Loader />}
+
             <div className={styles.details}>
                 <i className={styles.picture}>
-                    <img className={styles.image} src={productDetails.img} alt="" />
+                    <img className={styles.image} src={productDetails.img}
+                        alt={productDetails.model} />
                 </i>
 
                 <div className={styles.content}>
@@ -28,21 +36,21 @@ export default function ProductDetails() {
                     <h4><span>Година: </span>{productDetails.year}</h4>
                     <h4>{productDetails.os}</h4>
                     <p><span>Описание: </span>{productDetails.description}</p>
-                
+
                     <div className={styles.buttons}>
-                    <a className={styles.edit} href="#">
-                        Редактивай
-                    </a>
-                    <a className={styles.delete} href="#">
-                        Изтрий
-                    </a>
-                </div>
+                        <a className={styles.edit} href="#">
+                            Редактивай
+                        </a>
+                        <a className={styles.delete} href="#">
+                            Изтрий
+                        </a>
+                    </div>
                 </div>
 
                 <br />
             </div>
 
-           
+
         </div>
     );
 

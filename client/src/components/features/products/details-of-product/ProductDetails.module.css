@@ -9,7 +9,7 @@
     border-radius: 15px;
 }
 
-.image{
+.image {
     width: 20em;
     height: auto;
 }
@@ -21,8 +21,7 @@
 
 }
 
-.content
- {
+.content {
     flex: 1 1 65%;
 
 }
@@ -55,7 +54,7 @@
 
 
 
-.edit, 
+.edit,
 .delete {
     font-size: 15px;
     background-color: #48ca95;
@@ -71,14 +70,13 @@
     border-radius: 0.3em;
 }
 
-.delete{
+.delete {
     background-color: brown;
 }
 
 
-.edit:hover ,
-.delete:hover
-{
+.edit:hover,
+.delete:hover {
     background: #000;
     color: #fff;
     transition: ease-in all 0.5s;
