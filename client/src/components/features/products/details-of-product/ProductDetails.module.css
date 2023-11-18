@@ -1,6 +1,13 @@
+.product_info {
+    padding: 15em 10em 15em 10em;
+}
+
+
 .details {
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
+    gap: 4em;
     flex-wrap: wrap;
     background: #fff;
     text-align: center;
@@ -10,32 +17,33 @@
 }
 
 .image {
-    width: 20em;
+    width: 100%;
     height: auto;
 }
 
 
 
 .picture {
-    flex: 1 1 25%;
-
+    flex: 1 0 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .content {
     flex: 1 1 65%;
-
 }
 
 .details h3 {
     color: #121010;
-    font-size: 20px;
-    line-height: 22px;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: bold;
     padding-bottom: 25px;
 }
 
 .details p {
-    font-size: 17px;
+    font-size: 15px;
     color: #050505;
     line-height: 30px;
 }
@@ -45,14 +53,9 @@
     display: block;
 }
 
-
-
-.product_info {
-    padding: 10em 10em 5em 10em;
+.buttons{
+    padding-top: 2em;
 }
-
-
-
 
 .edit,
 .delete {
@@ -71,7 +74,7 @@
 }
 
 .delete {
-    background-color: brown;
+    background-color: rgb(231, 108, 108);
 }
 
 

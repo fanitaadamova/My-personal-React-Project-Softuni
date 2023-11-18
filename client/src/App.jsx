@@ -14,6 +14,7 @@ import Tablets from './components/features/home/tablets/Tablets';
 import Phones from './components/features/home/phones/Phones';
 import SmartWatches from './components/features/home/smart-watches/SmartWatches';
 import Accessories from './components/features/home/accessories/Accessories';
+import Profile from './components/features/users/profile/Profile';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 
           <Route path='/login' element={<LoginForm />} />
           <Route path='/register' element={<RegisterForm />} />
+          <Route path='/profile' element={< Profile />} />
           <Route path='/add-product' element={<AddProduct />} />
           <Route path='*' element={<NotFound />} />
 
