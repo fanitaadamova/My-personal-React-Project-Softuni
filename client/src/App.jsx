@@ -1,5 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
+import { AuthContext } from './contexts/AuthContext';
+import useLocalStorage from './hooks/useLocalStorage';
+
 import Header from './components/features/header/Header';
 import Footer from './components/features/footer/Footer';
 import LoginForm from './components/features/users/login/LoginForm';
@@ -15,12 +18,16 @@ import Phones from './components/features/home/phones/Phones';
 import SmartWatches from './components/features/home/smart-watches/SmartWatches';
 import Accessories from './components/features/home/accessories/Accessories';
 import Profile from './components/features/users/profile/Profile';
+import EditProduct from './components/features/products/edit-product/EditProduct';
+
 
 
 function App() {
+  //get from custom hook useLocalStorage
+  const [auth, setAuth] = useLocalStorage('user');
 
   return (
-    <>
+    < AuthContext.Provider value={{ auth, setAuth }} >
       < Header />
       <main id="site-content">
         < Routes>
@@ -31,7 +38,9 @@ function App() {
           <Route path='/phones' element={< Phones />} />
           <Route path='/smart-watches' element={< SmartWatches />} />
           <Route path='/accessories' element={< Accessories />} />
+          
           <Route path='/details/:productId' element={<ProductDetails />} />
+          <Route path='/edit/:productId' element={< EditProduct />} />
 
           <Route path='/login' element={<LoginForm />} />
           <Route path='/register' element={<RegisterForm />} />
@@ -46,7 +55,7 @@ function App() {
         </Routes>
       </main>
       < Footer />
-    </>
+    </AuthContext.Provider>
 
   );
 }

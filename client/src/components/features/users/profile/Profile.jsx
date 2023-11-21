@@ -11,8 +11,9 @@ export default function Profile() {
                     <div className="col-lg-4">
                         <div className="card mb-4">
                             <div className="card-body text-center">
+                                {/* get dynamic avatar image */}
                                 <img
-                                    src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg"
+                                    src="https://i.pravatar.cc/500"
                                     alt="avatar"
                                     className="rounded-circle img-fluid"
                                 />

@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
 import styles from './LoginForm.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useRef, useState } from 'react';
 
-import { useEffect, useRef, useState } from 'react';
+import * as authAPI from '../../../../api/authAPI';
+import { AuthContext } from '../../../../contexts/AuthContext';
 
 const formInitialState = {
   email: '',
@@ -9,16 +11,14 @@ const formInitialState = {
 };
 
 export default function LoginForm() {
-  // const emailInputRef = useRef();
+  const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
+
   const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
   const [errors, setErrors] = useState({});
-
-  // за фокусиране на полето при зареждане на страницата
-  // useEffect(() => {
-  //   emailInputRef.current.focus();
-  // }, []);
-
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
 
 
   // Executes only on update
@@ -31,16 +31,6 @@ export default function LoginForm() {
     console.log('Form is updated');
   }, [formValues]);
 
-
-
-  useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
-
-    console.log('Form is updated');
-  }, [formValues]);
 
 
   const changeHandler = (e) => {
@@ -62,7 +52,19 @@ export default function LoginForm() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formValues);
+
+    authAPI.login(formValues)
+      .then(auth => {
+        setAuth(auth);
+        navigate('/');
+
+        console.log(auth);
+      })
+      .catch(error => {
+        setHasServerError(true);
+        setServerError(error.message);
+      });
+
     resetFormHandler();
   };
 
@@ -99,8 +101,6 @@ export default function LoginForm() {
 
 
 
-
-
   return (
     <div className={styles.login}>
       <div className="container">
@@ -115,15 +115,14 @@ export default function LoginForm() {
           <div className="col-md-10 offset-md-1">
 
 
-            <form id="request" className={styles.main_form}
+            <form id="request" method='POST' className={styles.main_form}
               onSubmit={submitHandler} >
-              <div className="row">
 
+              <div className="row">
                 <div className="col-md-12">
                   <label htmlFor="email">E-mail адрес:</label>
                   <input
                     className={styles.contactus}
-                    // ref={emailInputRef}
                     type="type"
                     name="email"
                     id="email"
@@ -158,6 +157,11 @@ export default function LoginForm() {
                     disabled={(Object.values(errors).some(x => x))
                       || (formValues.email == '' || formValues.password == '')}
                   >Влез</button>
+
+                  {hasServerError && (
+                    <p className={styles.serverError}>{serverError}</p>
+                  )}
+
                   <div className={styles.no_profile}>
                     <p>Нямаш профил?</p>
                     <Link className="nav-link" to="/register">Регистрация</Link>

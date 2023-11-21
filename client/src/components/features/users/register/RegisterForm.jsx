@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
 import styles from './RegisterForm.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useRef, useState } from 'react';
 
-import { useEffect, useRef, useState } from 'react';
+import { AuthContext } from '../../../../contexts/AuthContext';
+import * as authAPI from '../../../../api/authAPI';
 
 const formInitialState = {
   username: '',
@@ -13,9 +15,14 @@ const formInitialState = {
 
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
+  const { setAuth } = useContext(AuthContext);
+
   const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
   const [errors, setErrors] = useState({});
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
 
   useEffect(() => {
     if (!isMountedRef.current) {
@@ -44,6 +51,18 @@ export default function RegisterForm() {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(formValues);
+
+    authAPI.register(formValues)
+      .then(user => {
+        setAuth(user);
+        navigate('/');
+        console.log('sucsses');
+      })
+      .catch(error => {
+        setHasServerError(true);
+        setServerError(error.message);
+      });
+
     resetFormHandler();
   };
 
@@ -119,7 +138,7 @@ export default function RegisterForm() {
           <div className="col-md-10 offset-md-1">
 
 
-            <form id="request" className={styles.main_form}
+            <form id="request" method='POST' className={styles.main_form}
               onSubmit={submitHandler} >
               <div className="row">
                 <div className="col-md-12 ">
@@ -206,6 +225,11 @@ export default function RegisterForm() {
                     disabled={(Object.values(errors).some(x => x)
                       || (Object.values(formValues).some(x => x == '')))}
                   >Регистрирай се</button>
+
+                  {hasServerError && (
+                    <p className={styles.serverError}>{serverError}</p>
+                  )}
+
                   <div className={styles.go_to_profile}>
                     <p>Имаш профил?</p>
                     <Link className="nav-link" to="/login">Влез</Link>

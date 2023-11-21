@@ -1,71 +1,80 @@
+import * as request from '../library/request';
+
 const baseURL = 'http://localhost:3030/data/technique';
 
-export const getAll = async () => {
-    const response = await fetch(baseURL);
-    const result = await response.json();
 
-    const data = Object.values(result);
-    return data;
+export const getAll = async () => {
+    const result = await request.get(baseURL);
+
+    return Object.values(result);
 };
 
 export const getAllLaptops = async () => {
-    const response = await fetch(`${baseURL}?where=type%3D%22Лаптоп%22`);
-    const result = await response.json();
-    
-    const data = Object.values(result);
-   
-    return data;
+    const laptop = 'Лаптоп';
+    const query = new URLSearchParams({
+        where: `type="${laptop}"`,
+    });
+
+    const result = await request.get(`${baseURL}?${query}`);
+ //  const result = await request.get(`${baseURL}?where=type%3D%22Лаптоп%22`);
+    return Object.values(result);
 };
 
 export const getAllPhones = async () => {
-    const response = await fetch(`${baseURL}?where=type%3D%22Телефон%22`);
-    const result = await response.json();
 
-    const data = Object.values(result);
-   
-    return data;
+    const phone = 'Телефон';
+    const query = new URLSearchParams({
+        where: `type="${phone}"`,
+    });
+
+    const result = await request.get(`${baseURL}?${query}`);
+
+    return Object.values(result);
 };
 
 export const getAllTablets = async () => {
-    const response = await fetch(`${baseURL}?where=type%3D%22Таблет%22`);
-    const result = await response.json();
 
-    const data = Object.values(result);
-   
-    return data;
+    const tablet = 'Таблет';
+    const query = new URLSearchParams({
+        where: `type="${tablet}"`,
+    });
+
+    const result = await request.get(`${baseURL}?${query}`);
+
+    return Object.values(result);
 };
 
 export const getAllSmartWatches = async () => {
-    const response = await fetch(baseURL);
-    const result = await response.json();
+    const smartWatch = 'Смарт часовник';
+    const query = new URLSearchParams({
+        where: `type="${smartWatch}"`,
+    });
 
-    const data = Object.values(result).filter(product => product.type == 'Смарт часовник');
-
-    return data;
+    const result = await request.get(`${baseURL}?${query}`);
+    
+    return Object.values(result);
 };
 
 export const getAllAccessories = async () => {
-    const response = await fetch(`${baseURL}?where=type%3D%22Аксесоар%22`);
-    const result = await response.json();
+    const accessore = 'Аксесоар';
+    const query = new URLSearchParams({
+        where: `type="${accessore}"`,
+    });
 
-    const data = Object.values(result);
-   
-    return data;
+    const result = await request.get(`${baseURL}?${query}`);
+
+    return Object.values(result);
 };
 
-
+//TODO: да фактурирам с qyery string
 export const getLastTree = async () => {
-    const response = await fetch(baseURL);
-    const result = await response.json();
-
-    const data = Object.values(result).slice(-3);
-
+    const result = await request.get(baseURL);
+    const data = result.slice(-3);
     return data;
 };
 
 export const getOne = async (productId) => {
-    const response = await fetch(`${baseURL}/${productId}`);
-    const result = await response.json();
+    const result = await request.get(`${baseURL}/${productId}`);
 
     return result;
 };

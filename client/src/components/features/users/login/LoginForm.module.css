@@ -16,7 +16,7 @@
     line-height: 55px;
     font-weight: bold;
     padding: 0;
- 
+
     border-bottom: #48ca95 solid 1px;
     max-width: 315px;
     margin: auto;
@@ -87,30 +87,31 @@
     opacity: 1;
 }
 
-label{
+label {
     color: #fff;
     font-size: 1.5em;
 }
 
-.no_profile{
+.no_profile {
     justify-content: center;
     display: flex;
     flex-direction: row;
 }
 
-.no_profile p{
+.no_profile p {
     padding: 1.5em;
     color: #fff;
     font-size: 22px;
 }
 
-.no_profile a{
+.no_profile a {
     padding: 1.2em;
     color: #48ca95;
     font-size: 22px;
     text-decoration: underline !important;
 }
-.no_profile a:hover{
+
+.no_profile a:hover {
     color: #fff;
 }
 
@@ -120,6 +121,17 @@ label{
     margin: 0 0 20px 0;
 }
 
+.serverError {
+    padding: 1em;
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .inputError {
     border: 1px solid red;
+}
+
+.send_btn:disabled {
+    opacity: 0.7;
 }

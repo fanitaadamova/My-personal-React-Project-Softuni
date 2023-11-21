@@ -1,10 +1,10 @@
 import styles from './HomeProdusts.module.css';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import * as techniqueAPI from '../../../api/techniqueAPI';
 
-import Product from "../products/product/Product";
-import Loader from "../../shared/Loader";
+import Product from '../products/product/Product';
+import Loader from '../../shared/Loader';
 import BanerMain from './BanerMain';
 import { Link } from 'react-router-dom';
 
