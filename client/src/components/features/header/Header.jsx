@@ -15,9 +15,10 @@ export default function Header() {
 
     try {
       await authAPI.logout();
+      
       setAuth(null);
       navigate('/');
-      console.log('Ti se razlogna ot server-a');
+
     } catch (error) {
       console.log(error);
     }

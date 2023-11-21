@@ -81,3 +81,9 @@ export const create = async (productData) => {
 
     return result;
 };
+
+export const remove = async (productId) => {
+    const result = await request.remove(`${baseURL}/${productId}`);
+
+    return result;
+};
