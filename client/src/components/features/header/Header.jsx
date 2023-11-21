@@ -56,7 +56,7 @@ export default function Header() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarsExample04">
                   <ul className="navbar-nav mr-auto">
-                    <li className="nav-item d_none">
+                    <li className="nav-item">
                       <a className="nav-link" href="/search">
                         <i className="fa fa-search" aria-hidden="true" />
                       </a>
@@ -79,7 +79,7 @@ export default function Header() {
                             Профил
                           </a>
                         </li>
-                        <li className="nav-item d_none" onClick={logoutHandler} >
+                        <li className="nav-item" onClick={logoutHandler} >
                           <Link className="nav-link">
                             Изход
                           </Link>

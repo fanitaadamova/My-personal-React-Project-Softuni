@@ -45,14 +45,11 @@ export const getAllTablets = async () => {
 };
 
 export const getAllSmartWatches = async () => {
-    const smartWatch = 'Смарт часовник';
-    const query = new URLSearchParams({
-        where: `type="${smartWatch}"`,
-    });
+    const response = await fetch(baseURL);
+    const result = await response.json();
 
-    const result = await request.get(`${baseURL}?${query}`);
-    
-    return Object.values(result);
+    const data = Object.values(result).filter(product => product.type == 'Смарт часовник');
+    return data;
 };
 
 export const getAllAccessories = async () => {
@@ -75,6 +72,12 @@ export const getLastTree = async () => {
 
 export const getOne = async (productId) => {
     const result = await request.get(`${baseURL}/${productId}`);
+
+    return result;
+};
+
+export const create = async (productData) => {
+    const result = await request.post(baseURL, productData);
 
     return result;
 };

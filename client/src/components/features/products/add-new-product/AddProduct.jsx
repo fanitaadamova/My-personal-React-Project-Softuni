@@ -1,6 +1,8 @@
 import styles from './AddProduct.module.css';
-
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import * as techniqueAPI from '../../../../api/techniqueAPI';
 
 const formInitialState = {
     type: 'Лаптоп',
@@ -14,6 +16,8 @@ const formInitialState = {
 
 
 export default function AddProduct() {
+    const navigate = useNavigate();
+
     const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
@@ -43,7 +47,11 @@ export default function AddProduct() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(formValues);
+
+        techniqueAPI.create(formValues)
+            .then(() => navigate('/catalog'))
+            .catch(err => console.log(err));
+
         resetFormHandler();
     };
 
@@ -156,7 +164,6 @@ export default function AddProduct() {
                                     <label htmlFor="model" className={styles.label}>Модел:</label>
                                     <input
                                         className={styles.contactus}
-                                        placeholder="Модел"
                                         type="text"
                                         name="model"
                                         id="model"
@@ -173,7 +180,6 @@ export default function AddProduct() {
                                     <label htmlFor="year" className={styles.label} >Година:</label>
                                     <input
                                         className={styles.contactus}
-                                        placeholder="Година"
                                         type="number"
                                         name="year"
                                         id="year"
@@ -190,7 +196,6 @@ export default function AddProduct() {
                                     <label htmlFor="description" className={styles.label} >Описание:</label>
                                     <input
                                         className={styles.contactus}
-                                        placeholder="Описание"
                                         type="text"
                                         name="description"
                                         id="description"
@@ -207,7 +212,6 @@ export default function AddProduct() {
                                     <label htmlFor="price" className={styles.label} >Цена:</label>
                                     <input
                                         className={styles.contactus}
-                                        placeholder="Цена"
                                         type="number"
                                         name="price"
                                         id="price"
@@ -240,7 +244,6 @@ export default function AddProduct() {
                                     <label htmlFor="os" className={styles.label} >Операционна система:</label>
                                     <input
                                         className={styles.contactus}
-                                        placeholder="Операционна система"
                                         type="text"
                                         name="os"
                                         id="os"
