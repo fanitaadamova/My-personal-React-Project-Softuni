@@ -7,7 +7,7 @@ import * as authAPI from '../../../../api/authAPI';
 
 const formInitialState = {
   username: '',
-  phoneNumber: '',
+  phone: '',
   email: '',
   password: '',
   rePassword: '',
@@ -174,17 +174,17 @@ export default function RegisterForm() {
                   )}
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="phoneNumber">Мобилен номер:</label>
+                  <label htmlFor="phone">Мобилен номер:</label>
                   <input
                     className={styles.contactus}
                     type="type"
-                    name="phoneNumber"
-                    id="phoneNumber"
-                    value={formValues.phoneNumber}
+                    name="phone"
+                    id="phone"
+                    value={formValues.phone}
                     onChange={changeHandler}
                   />
-                  {errors.phoneNumber && (
-                    <p className={styles.errorMessage}>{errors.phoneNumber}</p>
+                  {errors.phone && (
+                    <p className={styles.errorMessage}>{errors.phone}</p>
                   )}
                 </div>
                 <div className="col-md-12">

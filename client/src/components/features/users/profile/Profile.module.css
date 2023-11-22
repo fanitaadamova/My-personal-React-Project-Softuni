@@ -1,9 +1,46 @@
 .profile {
     padding-top: 5em;
-    height: 100vh;
+
 }
 
 img {
     width: 135px;
     height: auto;
+}
+
+.three_box {
+    background-color: #fff;
+    padding-top: 90px;
+}
+
+
+.three_box .col-md-4 {
+    padding: 1em;
+}
+
+.titlepage h2 {
+    text-align: center;
+    font-size: 2.5em;
+   
+}
+
+.dummy{
+    margin: 0 auto;
+    border: 1px solid #48ca95;
+    width: 35ch;
+    margin-bottom: 4em;
+}
+
+
+
+.no_technique {
+    width: auto;
+    height: 100vh;
+    text-align: center;
+    margin: 5em auto;
+}
+
+.no_content {
+    margin: 5em auto;
+    font-size: 2em;
 }

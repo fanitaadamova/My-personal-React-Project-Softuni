@@ -44,3 +44,15 @@
     width: 40ch;
     margin-bottom: 4em;
 }
+
+.no_technique {
+    width: auto;
+    height: 100vh;
+    text-align: center;
+    margin: 5em auto;
+}
+
+.no_content {
+    margin: 5em auto;
+    font-size: 2em;
+}

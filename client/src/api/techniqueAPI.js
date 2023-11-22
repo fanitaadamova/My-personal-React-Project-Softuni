@@ -16,7 +16,7 @@ export const getAllLaptops = async () => {
     });
 
     const result = await request.get(`${baseURL}?${query}`);
- //  const result = await request.get(`${baseURL}?where=type%3D%22Лаптоп%22`);
+    //  const result = await request.get(`${baseURL}?where=type%3D%22Лаптоп%22`);
     return Object.values(result);
 };
 
@@ -66,7 +66,7 @@ export const getAllAccessories = async () => {
 //TODO: да фактурирам с qyery string
 export const getLastTree = async () => {
     const result = await request.get(baseURL);
-    const data = result.slice(-3);
+    const data = result.slice(-3).reverse();
     return data;
 };
 
@@ -84,6 +84,21 @@ export const create = async (productData) => {
 
 export const remove = async (productId) => {
     const result = await request.remove(`${baseURL}/${productId}`);
+
+    return result;
+};
+
+//TODO: to be used in edit component
+export const edit = async (productId, productData) => {
+    const result = await request.put(`${baseURL}/${productId}`, productData);
+
+    return result;
+};
+
+
+//TODO: to be used in profile component
+export const getMyOwnProducts = async (userId) => {
+    const result = await request.get(`${baseURL}?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
 
     return result;
 };
