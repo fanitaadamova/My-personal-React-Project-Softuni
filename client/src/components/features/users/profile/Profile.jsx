@@ -22,9 +22,6 @@ export default function Profile() {
 
     }, [auth]);
 
-    console.log(auth);
-    console.log(ownProducts);
-
     return (
         <>
             <section className={styles.profile}>

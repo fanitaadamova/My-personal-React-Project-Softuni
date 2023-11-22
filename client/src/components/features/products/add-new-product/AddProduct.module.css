@@ -60,6 +60,15 @@
     height: 151px;
 }
 
+.main_form  textarea{
+    border: black solid 2px;
+}
+
+.main_form  .description{
+    height: 10em;
+    width: 100%;
+}
+
 .main_form .send_btn {
     font-size: 22px;
     transition: ease-in all 0.5s;

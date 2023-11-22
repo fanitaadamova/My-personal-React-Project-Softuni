@@ -194,8 +194,8 @@ export default function AddProduct() {
                                 </div>
                                 <div className="col-md-12">
                                     <label htmlFor="description" className={styles.label} >Описание:</label>
-                                    <input
-                                        className={styles.contactus}
+                                    <textarea
+                                        className={styles.description}
                                         type="text"
                                         name="description"
                                         id="description"

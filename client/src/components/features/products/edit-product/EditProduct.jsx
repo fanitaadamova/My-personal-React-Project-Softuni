@@ -22,7 +22,7 @@ export default function EditProduct() {
     }, [productId]);
 
     const submitHandler = () => {
-
+        //TODO:
     };
 
     return (
@@ -48,7 +48,7 @@ export default function EditProduct() {
                                     <select className={styles.contactus}
                                         name="type" id="type"
                                         // onChange={changeHandler} 
-                                         value={productInfo.type}>
+                                        value={productInfo.type}>
                                         <option value="Лаптоп">Лаптоп</option>
                                         <option value="Таблет">Таблет</option>
                                         <option value="Телефон">Телефон</option>
@@ -92,8 +92,8 @@ export default function EditProduct() {
                                 </div>
                                 <div className="col-md-12">
                                     <label htmlFor="description" className={styles.label} >Описание:</label>
-                                    <input
-                                        className={styles.contactus}
+                                    <textarea
+                                        className={styles.description}
                                         placeholder="Описание"
                                         type="text"
                                         name="description"
@@ -132,8 +132,8 @@ export default function EditProduct() {
                                         name="img"
                                         id="img"
                                         value={productInfo.img}
-                                        //onChange={changeHandler}
-                                        //onBlur={imgValidator}
+                                    //onChange={changeHandler}
+                                    //onBlur={imgValidator}
                                     />
 
                                     {errors.img && (
