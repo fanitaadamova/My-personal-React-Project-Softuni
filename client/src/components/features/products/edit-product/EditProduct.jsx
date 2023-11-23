@@ -26,14 +26,14 @@ export default function EditProduct() {
     const changeHandler = (e) => {
         let value = '';
         if (e.target.type) {
-          value = e.target.value;
+            value = e.target.value;
         }
-    
+
         setProductInfo(state => ({
-          ...state,
-          [e.target.name]: value,
+            ...state,
+            [e.target.name]: value,
         }));
-      };
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -41,6 +41,84 @@ export default function EditProduct() {
             .then(() => navigate('/catalog'))
             .catch(err => console.log(err));
 
+    };
+
+    const modelValidator = () => {
+        if (productInfo.model.length < 5) {
+            setErrors(state => ({
+                ...state,
+                model: 'Модела трябва да бъде минимум 5 символа!',
+            }));
+        } else {
+            if (errors.model) {
+                setErrors(state => ({ ...state, model: '' }));
+            }
+        }
+    };
+
+    const yearValidator = () => {
+        if (Number(productInfo.year) < 2000) {
+            setErrors(state => ({
+                ...state,
+                year: 'Годината трябва да бъде над 2000!',
+            }));
+        } else {
+            if (errors.year) {
+                setErrors(state => ({ ...state, year: '' }));
+            }
+        }
+    };
+
+    const priceValidator = () => {
+        if (Number(productInfo.price) <= 0) {
+            setErrors(state => ({
+                ...state,
+                price: 'Цената трябва да бъде по-голяма от 0!',
+            }));
+        } else {
+            if (errors.price) {
+                setErrors(state => ({ ...state, price: '' }));
+            }
+        }
+    };
+
+    const descriptionValidator = () => {
+        if (productInfo.description.length < 5) {
+            setErrors(state => ({
+                ...state,
+                description: 'Описанието на продукта трябва да бъде минимум 5 символа!',
+            }));
+        } else {
+            if (errors.description) {
+                setErrors(state => ({ ...state, description: '' }));
+            }
+        }
+    };
+
+    const osValidator = () => {
+        if (productInfo.os.length < 1) {
+            setErrors(state => ({
+                ...state,
+                os: 'Полето е задължително!',
+            }));
+        } else {
+            if (errors.os) {
+                setErrors(state => ({ ...state, os: '' }));
+            }
+        }
+    };
+
+    const imgValidator = () => {
+        if (productInfo.img.length < 1) {
+            setErrors(state => ({
+                ...state,
+                img: 'Полето е задължително!',
+            }));
+        } else {
+            if (errors.img) {
+                setErrors(state => ({ ...state, img: '' }));
+            }
+        }
     };
 
     return (
@@ -84,7 +162,7 @@ export default function EditProduct() {
                                         id="model"
                                         value={productInfo.model}
                                         onChange={changeHandler}
-                                    //onBlur={modelValidator}
+                                        onBlur={modelValidator}
                                     />
 
                                     {errors.model && (
@@ -101,7 +179,7 @@ export default function EditProduct() {
                                         id="year"
                                         value={productInfo.year}
                                         onChange={changeHandler}
-                                    // onBlur={yearValidator}
+                                        onBlur={yearValidator}
                                     />
 
                                     {errors.year && (
@@ -118,7 +196,7 @@ export default function EditProduct() {
                                         id="description"
                                         value={productInfo.description}
                                         onChange={changeHandler}
-                                    // onBlur={descriptionValidator}
+                                        onBlur={descriptionValidator}
                                     />
 
                                     {errors.description && (
@@ -135,7 +213,7 @@ export default function EditProduct() {
                                         id="price"
                                         value={productInfo.price}
                                         onChange={changeHandler}
-                                    // onBlur={priceValidator}
+                                        onBlur={priceValidator}
                                     />
 
                                     {errors.price && (
@@ -151,7 +229,7 @@ export default function EditProduct() {
                                         id="img"
                                         value={productInfo.img}
                                         onChange={changeHandler}
-                                    //onBlur={imgValidator}
+                                        onBlur={imgValidator}
                                     />
 
                                     {errors.img && (
@@ -168,7 +246,7 @@ export default function EditProduct() {
                                         id="os"
                                         value={productInfo.os}
                                         onChange={changeHandler}
-                                    //  onBlur={osValidator}
+                                        onBlur={osValidator}
                                     />
 
                                     {errors.os && (

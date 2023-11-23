@@ -18,18 +18,18 @@ const formInitialState = {
 export default function AddProduct() {
     const navigate = useNavigate();
 
-    const isMountedRef = useRef(false);
+   // const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
-    useEffect(() => {
-        if (!isMountedRef.current) {
-            isMountedRef.current = true;
-            return;
-        }
+    // useEffect(() => {
+    //     if (!isMountedRef.current) {
+    //         isMountedRef.current = true;
+    //         return;
+    //     }
 
-        console.log('Form is updated');
-    }, [formValues]);
+    //     console.log('Form is updated');
+    // }, [formValues]);
 
     const changeHandler = (e) => {
         let value = e.target.value;
