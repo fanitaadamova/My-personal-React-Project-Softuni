@@ -88,17 +88,15 @@ export const remove = async (productId) => {
     return result;
 };
 
-//TODO: to be used in edit component
 export const edit = async (productId, productData) => {
     const result = await request.put(`${baseURL}/${productId}`, productData);
-
+   
     return result;
 };
 
-
-//TODO: to be used in profile component
 export const getMyOwnProducts = async (userId) => {
     const result = await request.get(`${baseURL}?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
-
+      
     return result;
 };
+

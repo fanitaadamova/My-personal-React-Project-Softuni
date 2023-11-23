@@ -5,14 +5,22 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as techniqueAPI from '../../../../api/techniqueAPI';
 import Loader from '../../../shared/Loader';
 
-
+const formInitialState = {
+    type: 'Лаптоп',
+    model: '',
+    year: '',
+    description: '',
+    price: '',
+    img: '',
+    os: '',
+};
 
 export default function EditProduct() {
     const navigate = useNavigate();
 
     const { productId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
-    const [productInfo, setProductInfo] = useState({});
+    const [productInfo, setProductInfo] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
     useEffect(() => {

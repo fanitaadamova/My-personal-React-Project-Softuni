@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import * as techniqueAPI from '../../../../api/techniqueAPI';
+import * as purchaseAPI from '../../../../api/purchaseAPI';
 import { AuthContext } from '../../../../contexts/AuthContext';
 
 import Loader from '../../../shared/Loader';
@@ -11,12 +12,13 @@ import DeleteModal from '../delete-product/DeleteModal';
 export default function ProductDetails() {
     const navigate = useNavigate();
 
+    const { auth } = useContext(AuthContext);
+    const { productId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [showDelete, setShowDelete] = useState(false);
     const [isBought, setIsBought] = useState(false);
-    const { productId } = useParams();
     const [productDetails, setProductDetails] = useState({});
-    const { auth } = useContext(AuthContext);
+
 
     useEffect(() => {
         techniqueAPI.getOne(productId)
@@ -24,11 +26,18 @@ export default function ProductDetails() {
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false));
 
-    }, [productId]);
+        purchaseAPI.getALLPuchases()
+            .then(res => res.filter(x => x.userId === productId && x._ownerId === auth._id)
+                .length > 0 ? setIsBought(true) : setIsBought(false))
+            .catch(err => console.log(err));
+
+
+    }, [productId, auth._id]);
 
     const deleteClickHandler = () => {
         setShowDelete(true);
     };
+
 
     const onDeleteProduct = (e) => {
         e.preventDefault();
@@ -40,9 +49,13 @@ export default function ProductDetails() {
 
     };
 
-    const buyClickHandler = () => {
-        //TODO: IMPLEMENT with useEfcet, and change button with text Вече закупи този продукт.
-        console.log("закупи вече този продукт");
+    const buyClickHandler = (e) => {
+        e.preventDefault();
+        const userId = auth._id;
+        console.log(`userId - ${userId}`);
+        purchaseAPI.purchase(productId, userId)
+            .then(() => setIsBought(true))
+            .catch(err => console.log(err));
 
     };
 
@@ -96,12 +109,14 @@ export default function ProductDetails() {
                         <div className={styles.buttons}>
                             {/* logdin user - already bought */}
                             {isBought && (
-                                <p>Вече закупи този продукт.</p>
+                                <p className={styles.alreadyBought}>Вече закупи този продукт.</p>
 
                             )}
-                            <a className={styles.buy} onClick={buyClickHandler}>
-                                Купи
-                            </a>
+                            {!isBought && (
+                                <a className={styles.buy} onClick={buyClickHandler}>
+                                    Купи
+                                </a>
+                            )}
                         </div>
                     )}
 

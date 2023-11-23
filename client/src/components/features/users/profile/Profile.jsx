@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 
 import { AuthContext } from '../../../../contexts/AuthContext';
 import * as techniqueAPI from '../../../../api/techniqueAPI';
+import * as purchaseAPI from '../../../../api/purchaseAPI';
 import Loader from '../../../shared/Loader';
 import Product from '../../products/product/Product';
 
@@ -19,6 +20,10 @@ export default function Profile() {
             .then((result) => setOwnProducts(result))
             .catch((err) => console.log(err))
             .finally(() => setIsLoading(false));
+            //TODO: get array with productId of bought product by auth._id
+            purchaseAPI.getALLPuchases()
+            .then(res => console.log(res.filter(x => x._ownerId == auth._id)))
+            .catch(err => console.log(err));
 
     }, [auth]);
 
@@ -82,37 +87,37 @@ export default function Profile() {
 
 
 
-            <div className={styles.three_box}>
-                <div className="container">
-                    <div className={styles.titlepage}>
-                        <h2>Създадени оферти</h2>
-                    </div>
-                    <div className={styles.dummy}></div>
-                    {isLoading && < Loader />}
-
-                    {ownProducts.length > 0
-                        ? (<>
-                            <div className="row">
-                                {ownProducts.map(tech => (
-                                    < Product
-                                        productId={tech._id}
-                                        key={tech._id}
-                                        type={tech.type}
-                                        model={tech.model}
-                                        description={tech.description}
-                                        price={tech.price}
-                                        img={tech.img}
-                                    />
-                                ))}
-                            </div>
-                        </>)
-                        : <div className={styles.no_technique}>
-                            <p className={styles.no_content}>Няма създадени оферти.</p>
+                <div className={styles.three_box}>
+                    <div className="container">
+                        <div className={styles.titlepage}>
+                            <h2>Създадени оферти</h2>
                         </div>
-                    }
+                        <div className={styles.dummy}></div>
+                        {isLoading && < Loader />}
 
+                        {ownProducts.length > 0
+                            ? (<>
+                                <div className="row">
+                                    {ownProducts.map(tech => (
+                                        < Product
+                                            productId={tech._id}
+                                            key={tech._id}
+                                            type={tech.type}
+                                            model={tech.model}
+                                            description={tech.description}
+                                            price={tech.price}
+                                            img={tech.img}
+                                        />
+                                    ))}
+                                </div>
+                            </>)
+                            : <div className={styles.no_technique}>
+                                <p className={styles.no_content}>Няма създадени оферти.</p>
+                            </div>
+                        }
+
+                    </div>
                 </div>
-            </div>
             </section>
 
 
