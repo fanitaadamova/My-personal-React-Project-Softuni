@@ -33,10 +33,10 @@ export default function ProductDetails() {
     const onDeleteProduct = (e) => {
         e.preventDefault();
         setShowDelete(false);
-       
+
         techniqueAPI.remove(productId)
-        .then(() => navigate('/catalog'))
-        .catch(err => console.log(err));
+            .then(() => navigate('/catalog'))
+            .catch(err => console.log(err));
 
     };
 
@@ -52,9 +52,7 @@ export default function ProductDetails() {
     if (auth) {
         if (productDetails._ownerId === auth._id) {
             isOwner = true;
-        }
-
-        if (productDetails._ownerId !== auth._id && auth._id) {
+        } else {
             isLogdin = true;
         }
     }

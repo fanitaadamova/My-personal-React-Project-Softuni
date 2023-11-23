@@ -16,7 +16,7 @@ const formInitialState = {
 
 export default function RegisterForm() {
   const navigate = useNavigate();
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);

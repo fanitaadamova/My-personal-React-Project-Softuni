@@ -12,7 +12,7 @@ const formInitialState = {
 
 export default function LoginForm() {
   const navigate = useNavigate();
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
 
   const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
@@ -54,11 +54,11 @@ export default function LoginForm() {
     e.preventDefault();
 
     authAPI.login(formValues)
-      .then(auth => {
-        setAuth(auth);
+      .then(user => {
+        setAuth(user);
         navigate('/');
 
-        console.log(auth);
+        console.log(user);
       })
       .catch(error => {
         setHasServerError(true);

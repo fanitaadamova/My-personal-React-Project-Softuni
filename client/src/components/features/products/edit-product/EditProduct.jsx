@@ -1,6 +1,6 @@
 import styles from './EditProduct.module.css';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import * as techniqueAPI from '../../../../api/techniqueAPI';
 import Loader from '../../../shared/Loader';
@@ -8,6 +8,8 @@ import Loader from '../../../shared/Loader';
 
 
 export default function EditProduct() {
+    const navigate = useNavigate();
+
     const { productId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [productInfo, setProductInfo] = useState({});
@@ -21,8 +23,24 @@ export default function EditProduct() {
 
     }, [productId]);
 
-    const submitHandler = () => {
-        //TODO:
+    const changeHandler = (e) => {
+        let value = '';
+        if (e.target.type) {
+          value = e.target.value;
+        }
+    
+        setProductInfo(state => ({
+          ...state,
+          [e.target.name]: value,
+        }));
+      };
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        techniqueAPI.edit(productId, productInfo)
+            .then(() => navigate('/catalog'))
+            .catch(err => console.log(err));
+
     };
 
     return (
@@ -40,14 +58,14 @@ export default function EditProduct() {
                 <div className="row">
                     <div className="col-md-10 offset-md-1">
 
-                        <form id="request" className={styles.main_form}
+                        <form id="request" method='POST' className={styles.main_form}
                             onSubmit={submitHandler}>
                             <div className="row">
                                 <div className="col-md-12 ">
                                     <label className={styles.label} htmlFor="type">Избери тип:</label>
                                     <select className={styles.contactus}
                                         name="type" id="type"
-                                        // onChange={changeHandler} 
+                                        onChange={changeHandler}
                                         value={productInfo.type}>
                                         <option value="Лаптоп">Лаптоп</option>
                                         <option value="Таблет">Таблет</option>
@@ -65,7 +83,7 @@ export default function EditProduct() {
                                         name="model"
                                         id="model"
                                         value={productInfo.model}
-                                    // onChange={changeHandler}
+                                        onChange={changeHandler}
                                     //onBlur={modelValidator}
                                     />
 
@@ -82,7 +100,7 @@ export default function EditProduct() {
                                         name="year"
                                         id="year"
                                         value={productInfo.year}
-                                    // onChange={changeHandler}
+                                        onChange={changeHandler}
                                     // onBlur={yearValidator}
                                     />
 
@@ -99,7 +117,7 @@ export default function EditProduct() {
                                         name="description"
                                         id="description"
                                         value={productInfo.description}
-                                    //  onChange={changeHandler}
+                                        onChange={changeHandler}
                                     // onBlur={descriptionValidator}
                                     />
 
@@ -116,7 +134,7 @@ export default function EditProduct() {
                                         name="price"
                                         id="price"
                                         value={productInfo.price}
-                                    // onChange={changeHandler}
+                                        onChange={changeHandler}
                                     // onBlur={priceValidator}
                                     />
 
@@ -132,7 +150,7 @@ export default function EditProduct() {
                                         name="img"
                                         id="img"
                                         value={productInfo.img}
-                                    //onChange={changeHandler}
+                                        onChange={changeHandler}
                                     //onBlur={imgValidator}
                                     />
 
@@ -149,7 +167,7 @@ export default function EditProduct() {
                                         name="os"
                                         id="os"
                                         value={productInfo.os}
-                                    //   onChange={changeHandler}
+                                        onChange={changeHandler}
                                     //  onBlur={osValidator}
                                     />
 
