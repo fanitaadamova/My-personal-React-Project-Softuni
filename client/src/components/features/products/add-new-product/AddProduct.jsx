@@ -17,19 +17,9 @@ const formInitialState = {
 
 export default function AddProduct() {
     const navigate = useNavigate();
-
-   // const isMountedRef = useRef(false);
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
-    // useEffect(() => {
-    //     if (!isMountedRef.current) {
-    //         isMountedRef.current = true;
-    //         return;
-    //     }
-
-    //     console.log('Form is updated');
-    // }, [formValues]);
 
     const changeHandler = (e) => {
         let value = e.target.value;
@@ -132,6 +122,7 @@ export default function AddProduct() {
             }
         }
     };
+
 
     return (
         <div className={styles.product}>
@@ -260,7 +251,6 @@ export default function AddProduct() {
                                     <button className={styles.send_btn} type="submit"
                                         disabled={(Object.values(errors).some(x => x)
                                             || (Object.values(formValues).some(x => x == '')))}
-
                                     >Създай</button>
                                 </div>
                             </div>

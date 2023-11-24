@@ -20,6 +20,7 @@ export default function Profile() {
             .then((result) => setOwnProducts(result))
             .catch((err) => console.log(err))
             .finally(() => setIsLoading(false));
+            
             //TODO: get array with productId of bought product by auth._id
             purchaseAPI.getALLPuchases()
             .then(res => console.log(res.filter(x => x._ownerId == auth._id)))

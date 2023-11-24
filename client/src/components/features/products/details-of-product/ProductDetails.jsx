@@ -26,11 +26,14 @@ export default function ProductDetails() {
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false));
 
-        purchaseAPI.getALLPuchases()
-            .then(res => res.filter(x => x.userId === productId && x._ownerId === auth._id)
-                .length > 0 ? setIsBought(true) : setIsBought(false))
-            .catch(err => console.log(err));
+        // purchaseAPI.getALLPuchases()
+        //     .then(res => res.filter(x => x.productId === productId && x._ownerId === auth._id)
+        //         .length > 0 ? setIsBought(true) : setIsBought(false))
+        //     .catch(err => console.log(err));
 
+        purchaseAPI.getBuyersOfProduct(productId)
+            .then(result => result.includes(auth._id) ? setIsBought(true) : setIsBought(false))
+            .catch(err => console.log(err));
 
     }, [productId, auth._id]);
 
@@ -51,8 +54,8 @@ export default function ProductDetails() {
 
     const buyClickHandler = (e) => {
         e.preventDefault();
+
         const userId = auth._id;
-        console.log(`userId - ${userId}`);
         purchaseAPI.purchase(productId, userId)
             .then(() => setIsBought(true))
             .catch(err => console.log(err));
@@ -94,7 +97,7 @@ export default function ProductDetails() {
                     <h4>{productDetails.os}</h4>
                     <p><span>Описание: </span>{productDetails.description}</p>
 
-                    {/* owner of product */}
+                    {/* Owner of product */}
                     {isOwner && (
                         <div className={styles.buttons}>
                             <Link className={styles.edit} to={`/edit/${productId}`}>
@@ -107,7 +110,7 @@ export default function ProductDetails() {
                     )}
                     {isLogdin && (
                         <div className={styles.buttons}>
-                            {/* logdin user - already bought */}
+                            {/* loged-in user - already bought */}
                             {isBought && (
                                 <p className={styles.alreadyBought}>Вече закупи този продукт.</p>
 
