@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { AuthContext } from './contexts/AuthContext';
-import useLocalStorage from './hooks/useLocalStorage';
+import { AuthProvider } from './contexts/AuthContext';
 
 import Header from './components/features/header/Header';
 import Footer from './components/features/footer/Footer';
@@ -23,11 +22,9 @@ import EditProduct from './components/features/products/edit-product/EditProduct
 
 
 function App() {
-  //get from custom hook useLocalStorage
-  const [auth, setAuth] = useLocalStorage('user');
 
   return (
-    < AuthContext.Provider value={{ auth, setAuth }} >
+    < AuthProvider >
       < Header />
       <main id="site-content">
         < Routes>
@@ -55,7 +52,7 @@ function App() {
         </Routes>
       </main>
       < Footer />
-    </AuthContext.Provider>
+    </AuthProvider>
 
   );
 }

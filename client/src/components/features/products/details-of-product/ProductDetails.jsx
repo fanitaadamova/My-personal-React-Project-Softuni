@@ -30,12 +30,13 @@ export default function ProductDetails() {
         //     .then(res => res.filter(x => x.productId === productId && x._ownerId === auth._id)
         //         .length > 0 ? setIsBought(true) : setIsBought(false))
         //     .catch(err => console.log(err));
+        if (auth) {
+            purchaseAPI.getBuyersOfProduct(productId)
+                .then(result => result.includes(auth._id) ? setIsBought(true) : setIsBought(false))
+                .catch(err => console.log(err));
+        }
 
-        purchaseAPI.getBuyersOfProduct(productId)
-            .then(result => result.includes(auth._id) ? setIsBought(true) : setIsBought(false))
-            .catch(err => console.log(err));
-
-    }, [productId, auth._id]);
+    }, [productId, auth]);
 
     const deleteClickHandler = () => {
         setShowDelete(true);
@@ -110,7 +111,7 @@ export default function ProductDetails() {
                     )}
                     {isLogdin && (
                         <div className={styles.buttons}>
-                            {/* loged-in user - already bought */}
+                            {/* Loged-in user - already bought */}
                             {isBought && (
                                 <p className={styles.alreadyBought}>Вече закупи този продукт.</p>
 
