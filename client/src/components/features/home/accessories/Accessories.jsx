@@ -24,10 +24,10 @@ export default function Accessories() {
     return (
         <div className={styles.three_box}>
             <div className="container">
-            <div className={styles.titlepage}>
-                        <h2>Оферти за аксесоари</h2>
-                    </div>
-                    <div className={styles.dummy}></div>
+                <div className={styles.titlepage}>
+                    <h2>Оферти за аксесоари</h2>
+                </div>
+                <div className={styles.dummy}></div>
                 <div className="row">
 
                     {isLoading && < Loader />}

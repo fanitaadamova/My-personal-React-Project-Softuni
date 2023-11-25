@@ -39,7 +39,7 @@ export default function ProductDetails() {
                 .catch(err => console.log(err));
         }
 
-    }, [productId, auth]);
+    }, [productId, auth, navigate]);
 
     const deleteClickHandler = () => {
         setShowDelete(true);

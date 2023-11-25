@@ -1,6 +1,6 @@
 import styles from './LoginForm.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import * as authAPI from '../../../../api/authAPI';
 import { AuthContext } from '../../../../contexts/AuthContext';
@@ -12,24 +12,13 @@ const formInitialState = {
 
 export default function LoginForm() {
   const navigate = useNavigate();
-  const { auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
 
-  const isMountedRef = useRef(false);
+  //const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
   const [errors, setErrors] = useState({});
   const [hasServerError, setHasServerError] = useState(false);
   const [serverError, setServerError] = useState({});
-
-
-  // Executes only on update
-  useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
-
-    console.log('Form is updated');
-  }, [formValues]);
 
 
 
@@ -57,8 +46,6 @@ export default function LoginForm() {
       .then(user => {
         setAuth(user);
         navigate('/');
-
-        console.log(user);
       })
       .catch(error => {
         setHasServerError(true);

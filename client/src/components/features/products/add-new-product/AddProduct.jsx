@@ -1,5 +1,5 @@
 import styles from './AddProduct.module.css';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as techniqueAPI from '../../../../api/techniqueAPI';
