@@ -15,7 +15,7 @@ export default function Header() {
 
     try {
       await authAPI.logout();
-      
+
       setAuth(null);
       navigate('/');
 
@@ -58,9 +58,9 @@ export default function Header() {
                 <div className="collapse navbar-collapse" id="navbarsExample04">
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
-                      <a className="nav-link" href="/search">
+                      <Link className="nav-link" to="/search">
                         <i className="fa fa-search" aria-hidden="true" />
-                      </a>
+                      </Link>
                     </li>
                     <li className="nav-item">
                       <Link className="nav-link" to="/">Начало</Link>
@@ -98,7 +98,7 @@ export default function Header() {
                       </>}
 
                   </ul>
-                  
+
                 </div>
               </nav>
             </div>

@@ -18,6 +18,7 @@ import SmartWatches from './components/features/home/smart-watches/SmartWatches'
 import Accessories from './components/features/home/accessories/Accessories';
 import Profile from './components/features/users/profile/Profile';
 import EditProduct from './components/features/products/edit-product/EditProduct';
+import Search from './components/features/products/search/Search';
 
 
 
@@ -35,7 +36,8 @@ function App() {
           <Route path='/phones' element={< Phones />} />
           <Route path='/smart-watches' element={< SmartWatches />} />
           <Route path='/accessories' element={< Accessories />} />
-          
+          < Route path='/search' element={< Search />} />
+
           <Route path='/details/:productId' element={<ProductDetails />} />
           <Route path='/edit/:productId' element={< EditProduct />} />
 

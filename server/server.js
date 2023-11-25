@@ -1098,7 +1098,7 @@
                     body.password.length == 0) {
                     throw new RequestError$2('Missing fields');
                 } else if (context.protectedStorage.query('users', { [identity]: body[identity] }).length !== 0) {
-                    throw new ConflictError$1(`A user with the same ${identity} already exists`);
+                    throw new ConflictError$1(`Вече съществува потребител със същия ${identity}`);
                 } else {
                     const newUser = Object.assign({}, body, {
                         [identity]: body[identity],
@@ -1126,10 +1126,10 @@
 
                         return result;
                     } else {
-                        throw new CredentialError$1('Login or password don\'t match');
+                        throw new CredentialError$1('Потребителското име или паролата не съвпадат');
                     }
                 } else {
-                    throw new CredentialError$1('Login or password don\'t match');
+                    throw new CredentialError$1('Потребителското име или паролата не съвпадат');
                 }
             }
 
@@ -1690,12 +1690,12 @@
     		},
     		"c7f51805-242b-45ed-ae3e-80b68605141b": {
     			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			type: "Компютър",
+    			type: "Лаптоп",
     			model: "GAMING League i5-6500",
     			year: 2023,
     			description: "Настолен компютър GAMING League QUADCore Intel i5-6500 3.6Ghz TURBO, 16GB RAM DDR4, 1000GB SSD, VIDEO 8GB GDDR5 Radeon RX+ Подарък (клавиатура, мишка).",
     			price: 890,
-    			img: "https://s13emagst.akamaized.net/products/35828/35827731/images/res_7dda5e376c3fb824e9d62e80b131835a.jpg?width=720&height=720&hash=C909C6F99164F7242A20AFCD0D87F888",
+    			img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRTrx60Hp3T6J13JswX6F_6GqH89acg6ToiA&usqp=CAU",
     			os: "Windows OS",
     			_createdOn: 1615546332126,
     			_id: "c7f51805-242b-45ed-ae3e-80b68605141b"
