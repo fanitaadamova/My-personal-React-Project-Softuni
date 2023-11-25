@@ -23,7 +23,10 @@ export default function ProductDetails() {
     useEffect(() => {
         techniqueAPI.getOne(productId)
             .then(result => setProductDetails(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                if (err.code == 404) { navigate('/not-found'); }
+                console.log(err);
+            })
             .finally(() => setIsLoading(false));
 
         // purchaseAPI.getALLPuchases()
