@@ -17,7 +17,8 @@ Used a Softuni Practice server for back-end.
 ## Site overview 
 ### Every page contains navigation
  - NON logged in user
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/02c2cea2-f42e-4220-b237-21f02e72a7d2)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/84882981-672b-4e85-8f6b-bc16837765c4)
+
 
 
 
