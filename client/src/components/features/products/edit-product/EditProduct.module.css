@@ -116,3 +116,13 @@
 .send_btn:disabled{
     opacity: 0.5;
 }
+
+
+textarea {
+    resize: none;
+}
+
+.product .main_form input,
+.product .main_form select{
+    background-color: #fff;
+}

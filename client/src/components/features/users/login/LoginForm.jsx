@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 
 import * as authAPI from '../../../../api/authAPI';
 import { AuthContext } from '../../../../contexts/AuthContext';
+import useForm from '../../../../hooks/useForm';
 
 const formInitialState = {
   email: '',
@@ -14,35 +15,20 @@ export default function LoginForm() {
   const navigate = useNavigate();
   const { setAuth } = useContext(AuthContext);
 
-  //const isMountedRef = useRef(false);
   const [formValues, setFormValues] = useState(formInitialState);
   const [errors, setErrors] = useState({});
   const [hasServerError, setHasServerError] = useState(false);
   const [serverError, setServerError] = useState({});
 
 
-
-  const changeHandler = (e) => {
-    let value = '';
-    if (e.target.type) {
-      value = e.target.value;
-    }
-
-    setFormValues(state => ({
-      ...state,
-      [e.target.name]: value,
-    }));
-  };
-
   const resetFormHandler = () => {
     setFormValues(formInitialState);
     setErrors({});
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const submitHandler = (values) => {
 
-    authAPI.login(formValues)
+    authAPI.login(values)
       .then(user => {
         setAuth(user);
         navigate('/');
@@ -61,10 +47,10 @@ export default function LoginForm() {
   }
 
   const emailValidator = () => {
-    if (!validateEmail(formValues.email)) {
+    if (!validateEmail(values.email)) {
       setErrors(state => ({
         ...state,
-        email: 'Email адреса не е валиден формат!',
+        email: 'Email адреса не е валиден формат',
       }));
     } else {
       if (errors.email) {
@@ -74,10 +60,10 @@ export default function LoginForm() {
   };
 
   const passwordValidator = () => {
-    if (formValues.password.length < 5) {
+    if (values.password.length < 5) {
       setErrors(state => ({
         ...state,
-        password: 'Паролата трябва да бъде минимум 5 символа!',
+        password: 'Паролата трябва да бъде минимум 5 символа',
       }));
     } else {
       if (errors.password) {
@@ -86,7 +72,7 @@ export default function LoginForm() {
     }
   };
 
-
+  const { values, onChange, onSubmit } = useForm(submitHandler, formValues);
 
   return (
     <div className={styles.login}>
@@ -103,7 +89,7 @@ export default function LoginForm() {
 
 
             <form id="request" method='POST' className={styles.main_form}
-              onSubmit={submitHandler} >
+              onSubmit={onSubmit} >
 
               <div className="row">
                 <div className="col-md-12">
@@ -113,8 +99,8 @@ export default function LoginForm() {
                     type="type"
                     name="email"
                     id="email"
-                    value={formValues.email}
-                    onChange={changeHandler}
+                    value={values.email}
+                    onChange={onChange}
                     onBlur={emailValidator}
                   />
                   {errors.email && (
@@ -129,8 +115,8 @@ export default function LoginForm() {
                     type="type"
                     name="password"
                     id="password"
-                    value={formValues.password}
-                    onChange={changeHandler}
+                    value={values.password}
+                    onChange={onChange}
                     onBlur={passwordValidator}
                   />
 
@@ -141,8 +127,8 @@ export default function LoginForm() {
 
                 <div className="col-md-12">
                   <button className={styles.send_btn} type="submit"
-                    disabled={(Object.values(errors).some(x => x))
-                      || (formValues.email == '' || formValues.password == '')}
+                    disabled={(Object.values(errors).some(x => x)
+                      || (Object.values(values).some(x => x == '')))}
                   >Влез</button>
 
                   {hasServerError && (

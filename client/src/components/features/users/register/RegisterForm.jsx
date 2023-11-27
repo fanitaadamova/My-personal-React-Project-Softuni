@@ -1,58 +1,32 @@
 import styles from './RegisterForm.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { AuthContext } from '../../../../contexts/AuthContext';
 import * as authAPI from '../../../../api/authAPI';
-
-const formInitialState = {
-  username: '',
-  phone: '',
-  email: '',
-  password: '',
-  rePassword: '',
-};
+import useForm from '../../../../hooks/useForm';
+import formRegisterInitialState from '../utils/formRegisterInitialState';
 
 
 export default function RegisterForm() {
   const navigate = useNavigate();
-  const { auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
 
-  const isMountedRef = useRef(false);
-  const [formValues, setFormValues] = useState(formInitialState);
+  const [formValues, setFormValues] = useState(formRegisterInitialState);
   const [errors, setErrors] = useState({});
   const [hasServerError, setHasServerError] = useState(false);
   const [serverError, setServerError] = useState({});
 
-  useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
 
-    console.log('Form is updated');
-  }, [formValues]);
-
-
-  const changeHandler = (e) => {
-    let value = e.target.value;
-
-    setFormValues(state => ({
-      ...state,
-      [e.target.name]: value,
-    }));
-  };
 
   const resetFormHandler = () => {
-    setFormValues(formInitialState);
+    setFormValues(formRegisterInitialState);
     setErrors({});
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(formValues);
+  const submitHandler = (values) => {
 
-    authAPI.register(formValues)
+    authAPI.register(values)
       .then(user => {
         setAuth(user);
         navigate('/');
@@ -72,10 +46,10 @@ export default function RegisterForm() {
   }
 
   const emailValidator = () => {
-    if (!validateEmail(formValues.email)) {
+    if (!validateEmail(values.email)) {
       setErrors(state => ({
         ...state,
-        email: 'Email адреса не е валиден формат!',
+        email: 'Email адреса не е валиден формат',
       }));
     } else {
       if (errors.email) {
@@ -85,10 +59,10 @@ export default function RegisterForm() {
   };
 
   const usernameValidator = () => {
-    if (formValues.username.length < 5) {
+    if (values.username.length < 5) {
       setErrors(state => ({
         ...state,
-        username: 'Потребителското име трябва да бъде минимум 5 символа!',
+        username: 'Потребителското име трябва да бъде минимум 5 символа',
       }));
     } else {
       if (errors.username) {
@@ -98,10 +72,10 @@ export default function RegisterForm() {
   };
 
   const passwordValidator = () => {
-    if (formValues.password.length < 5) {
+    if (values.password.length < 5) {
       setErrors(state => ({
         ...state,
-        password: 'Паролата трябва да бъде минимум 5 символа!',
+        password: 'Паролата трябва да бъде минимум 5 символа',
       }));
     } else {
       if (errors.password) {
@@ -112,10 +86,10 @@ export default function RegisterForm() {
 
 
   const rePasswordValidator = () => {
-    if (formValues.rePassword != formValues.password) {
+    if (values.rePassword != values.password) {
       setErrors(state => ({
         ...state,
-        rePassword: 'Трябва да е идентична с паролата!',
+        rePassword: 'Трябва да е идентична с паролата',
       }));
     } else {
       if (errors.rePassword) {
@@ -123,6 +97,9 @@ export default function RegisterForm() {
       }
     }
   };
+
+  const { values, onChange, onSubmit } = useForm(submitHandler, formValues);
+
 
   return (
     <div className={styles.register}>
@@ -139,7 +116,7 @@ export default function RegisterForm() {
 
 
             <form id="request" method='POST' className={styles.main_form}
-              onSubmit={submitHandler} >
+              onSubmit={onSubmit} >
               <div className="row">
                 <div className="col-md-12 ">
                   <label htmlFor="username">Потребителско име:</label>
@@ -148,8 +125,8 @@ export default function RegisterForm() {
                     type="type"
                     name="username"
                     id="username"
-                    value={formValues.username}
-                    onChange={changeHandler}
+                    value={values.username}
+                    onChange={onChange}
                     onBlur={usernameValidator}
                   />
 
@@ -164,8 +141,8 @@ export default function RegisterForm() {
                     type="type"
                     name="email"
                     id="email"
-                    value={formValues.email}
-                    onChange={changeHandler}
+                    value={values.email}
+                    onChange={onChange}
                     onBlur={emailValidator}
                   />
 
@@ -180,8 +157,8 @@ export default function RegisterForm() {
                     type="type"
                     name="phone"
                     id="phone"
-                    value={formValues.phone}
-                    onChange={changeHandler}
+                    value={values.phone}
+                    onChange={onChange}
                   />
                   {errors.phone && (
                     <p className={styles.errorMessage}>{errors.phone}</p>
@@ -194,8 +171,8 @@ export default function RegisterForm() {
                     type="type"
                     name="password"
                     id="password"
-                    value={formValues.password}
-                    onChange={changeHandler}
+                    value={values.password}
+                    onChange={onChange}
                     onBlur={passwordValidator}
                   />
 
@@ -210,8 +187,8 @@ export default function RegisterForm() {
                     type="type"
                     name="rePassword"
                     id="rePassword"
-                    value={formValues.rePassword}
-                    onChange={changeHandler}
+                    value={values.rePassword}
+                    onChange={onChange}
                     onBlur={rePasswordValidator}
                   />
 
@@ -223,7 +200,7 @@ export default function RegisterForm() {
 
                   <button className={styles.send_btn} type="submit"
                     disabled={(Object.values(errors).some(x => x)
-                      || (Object.values(formValues).some(x => x == '')))}
+                      || (Object.values(values).some(x => x == '')))}
                   >Регистрирай се</button>
 
                   {hasServerError && (

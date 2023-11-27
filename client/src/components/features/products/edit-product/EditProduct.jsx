@@ -3,17 +3,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as techniqueAPI from '../../../../api/techniqueAPI';
+import  useForm  from '../../../../hooks/useForm';
 import Loader from '../../../shared/Loader';
 
-const formInitialState = {
-    type: 'Лаптоп',
-    model: '',
-    year: '',
-    description: '',
-    price: '',
-    img: '',
-    os: '',
-};
+import formInitialState from '../utils/initialFormValues';
 
 export default function EditProduct() {
     const navigate = useNavigate();
@@ -31,28 +24,16 @@ export default function EditProduct() {
 
     }, [productId]);
 
-    const changeHandler = (e) => {
-        let value = '';
-        if (e.target.type) {
-            value = e.target.value;
-        }
+    const submitHandler = (values) => {
 
-        setProductInfo(state => ({
-            ...state,
-            [e.target.name]: value,
-        }));
-    };
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-        techniqueAPI.edit(productId, productInfo)
+        techniqueAPI.edit(productId, values)
             .then(() => navigate('/catalog'))
             .catch(err => console.log(err));
 
     };
 
     const modelValidator = () => {
-        if (productInfo.model.length < 5) {
+        if (values.model.length < 5) {
             setErrors(state => ({
                 ...state,
                 model: 'Модела трябва да бъде минимум 5 символа!',
@@ -65,7 +46,7 @@ export default function EditProduct() {
     };
 
     const yearValidator = () => {
-        if (Number(productInfo.year) < 2000) {
+        if (Number(values.year) < 2000) {
             setErrors(state => ({
                 ...state,
                 year: 'Годината трябва да бъде над 2000!',
@@ -78,7 +59,7 @@ export default function EditProduct() {
     };
 
     const priceValidator = () => {
-        if (Number(productInfo.price) <= 0) {
+        if (Number(values.price) <= 0) {
             setErrors(state => ({
                 ...state,
                 price: 'Цената трябва да бъде по-голяма от 0!',
@@ -91,7 +72,7 @@ export default function EditProduct() {
     };
 
     const descriptionValidator = () => {
-        if (productInfo.description.length < 5) {
+        if (values.description.length < 5) {
             setErrors(state => ({
                 ...state,
                 description: 'Описанието на продукта трябва да бъде минимум 5 символа!',
@@ -104,7 +85,7 @@ export default function EditProduct() {
     };
 
     const osValidator = () => {
-        if (productInfo.os.length < 1) {
+        if (values.os.length < 1) {
             setErrors(state => ({
                 ...state,
                 os: 'Полето е задължително!',
@@ -117,7 +98,7 @@ export default function EditProduct() {
     };
 
     const imgValidator = () => {
-        if (productInfo.img.length < 1) {
+        if (values.img.length < 1) {
             setErrors(state => ({
                 ...state,
                 img: 'Полето е задължително!',
@@ -128,6 +109,9 @@ export default function EditProduct() {
             }
         }
     };
+
+
+    const { values, onChange, onSubmit } = useForm(submitHandler, productInfo);
 
     return (
         <div className={styles.product}>
@@ -145,14 +129,14 @@ export default function EditProduct() {
                     <div className="col-md-10 offset-md-1">
 
                         <form id="request" method='POST' className={styles.main_form}
-                            onSubmit={submitHandler}>
+                            onSubmit={onSubmit}>
                             <div className="row">
                                 <div className="col-md-12 ">
                                     <label className={styles.label} htmlFor="type">Избери тип:</label>
                                     <select className={styles.contactus}
                                         name="type" id="type"
-                                        onChange={changeHandler}
-                                        value={productInfo.type}>
+                                        onChange={onChange}
+                                        value={values.type}>
                                         <option value="Лаптоп">Лаптоп</option>
                                         <option value="Таблет">Таблет</option>
                                         <option value="Телефон">Телефон</option>
@@ -168,8 +152,8 @@ export default function EditProduct() {
                                         type="text"
                                         name="model"
                                         id="model"
-                                        value={productInfo.model}
-                                        onChange={changeHandler}
+                                        value={values.model}
+                                        onChange={onChange}
                                         onBlur={modelValidator}
                                     />
 
@@ -185,8 +169,8 @@ export default function EditProduct() {
                                         type="number"
                                         name="year"
                                         id="year"
-                                        value={productInfo.year}
-                                        onChange={changeHandler}
+                                        value={values.year}
+                                        onChange={onChange}
                                         onBlur={yearValidator}
                                     />
 
@@ -202,8 +186,8 @@ export default function EditProduct() {
                                         type="text"
                                         name="description"
                                         id="description"
-                                        value={productInfo.description}
-                                        onChange={changeHandler}
+                                        value={values.description}
+                                        onChange={onChange}
                                         onBlur={descriptionValidator}
                                     />
 
@@ -219,8 +203,8 @@ export default function EditProduct() {
                                         type="number"
                                         name="price"
                                         id="price"
-                                        value={productInfo.price}
-                                        onChange={changeHandler}
+                                        value={values.price}
+                                        onChange={onChange}
                                         onBlur={priceValidator}
                                     />
 
@@ -235,8 +219,8 @@ export default function EditProduct() {
                                         type="text"
                                         name="img"
                                         id="img"
-                                        value={productInfo.img}
-                                        onChange={changeHandler}
+                                        value={values.img}
+                                        onChange={onChange}
                                         onBlur={imgValidator}
                                     />
 
@@ -252,8 +236,8 @@ export default function EditProduct() {
                                         type="text"
                                         name="os"
                                         id="os"
-                                        value={productInfo.os}
-                                        onChange={changeHandler}
+                                        value={values.os}
+                                        onChange={onChange}
                                         onBlur={osValidator}
                                     />
 
@@ -264,7 +248,7 @@ export default function EditProduct() {
                                 <div className="col-md-12">
                                     <button className={styles.send_btn} type="submit"
                                         disabled={(Object.values(errors).some(x => x)
-                                            || (Object.values(productInfo).some(x => x == '')))}
+                                            || (Object.values(values).some(x => x == '')))}
 
                                     >Запази</button>
                                 </div>

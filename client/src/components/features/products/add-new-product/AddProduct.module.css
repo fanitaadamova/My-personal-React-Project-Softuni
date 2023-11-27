@@ -60,11 +60,11 @@
     height: 151px;
 }
 
-.main_form  textarea{
+.main_form textarea {
     border: black solid 2px;
 }
 
-.main_form  .description{
+.main_form .description {
     height: 10em;
     width: 100%;
 }
@@ -98,9 +98,10 @@
 
 
 .label {
-    color: black;;
+    color: black;
+    ;
     font-size: 20px;
-   
+
 }
 
 .errorMessage {
@@ -113,6 +114,16 @@
     border: 1px solid red;
 }
 
-.send_btn:disabled{
+.send_btn:disabled {
     opacity: 0.5;
+}
+
+
+textarea {
+    resize: none;
+}
+
+.product .main_form input,
+.product .main_form select{
+    background-color: #fff;
 }

@@ -3,16 +3,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import * as techniqueAPI from '../../../../api/techniqueAPI';
+import useForm from '../../../../hooks/useForm';
 
-const formInitialState = {
-    type: 'Лаптоп',
-    model: '',
-    year: '',
-    description: '',
-    price: '',
-    img: '',
-    os: '',
-};
+import formInitialState from '../utils/initialFormValues';
 
 
 export default function AddProduct() {
@@ -20,25 +13,14 @@ export default function AddProduct() {
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 
-
-    const changeHandler = (e) => {
-        let value = e.target.value;
-
-        setFormValues(state => ({
-            ...state,
-            [e.target.name]: value,
-        }));
-    };
-
     const resetFormHandler = () => {
         setFormValues(formInitialState);
         setErrors({});
     };
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+    const submitHandler = (values) => {
 
-        techniqueAPI.create(formValues)
+        techniqueAPI.create(values)
             .then(() => navigate('/catalog'))
             .catch(err => console.log(err));
 
@@ -46,7 +28,7 @@ export default function AddProduct() {
     };
 
     const modelValidator = () => {
-        if (formValues.model.length < 5) {
+        if (values.model.length < 5) {
             setErrors(state => ({
                 ...state,
                 model: 'Модела трябва да бъде минимум 5 символа!',
@@ -59,7 +41,7 @@ export default function AddProduct() {
     };
 
     const yearValidator = () => {
-        if (Number(formValues.year) < 2000) {
+        if (Number(values.year) < 2000) {
             setErrors(state => ({
                 ...state,
                 year: 'Годината трябва да бъде над 2000!',
@@ -72,7 +54,7 @@ export default function AddProduct() {
     };
 
     const priceValidator = () => {
-        if (Number(formValues.price) <= 0) {
+        if (Number(values.price) <= 0) {
             setErrors(state => ({
                 ...state,
                 price: 'Цената трябва да бъде по-голяма от 0!',
@@ -85,7 +67,7 @@ export default function AddProduct() {
     };
 
     const descriptionValidator = () => {
-        if (formValues.description.length < 5) {
+        if (values.description.length < 5) {
             setErrors(state => ({
                 ...state,
                 description: 'Описанието на продукта трябва да бъде минимум 5 символа!',
@@ -98,7 +80,7 @@ export default function AddProduct() {
     };
 
     const osValidator = () => {
-        if (formValues.os.length < 1) {
+        if (values.os.length < 1) {
             setErrors(state => ({
                 ...state,
                 os: 'Полето е задължително!',
@@ -111,7 +93,7 @@ export default function AddProduct() {
     };
 
     const imgValidator = () => {
-        if (formValues.img.length < 1) {
+        if (values.img.length < 1) {
             setErrors(state => ({
                 ...state,
                 img: 'Полето е задължително!',
@@ -123,6 +105,8 @@ export default function AddProduct() {
         }
     };
 
+
+    const { values, onChange, onSubmit } = useForm(submitHandler, formValues);
 
     return (
         <div className={styles.product}>
@@ -138,12 +122,12 @@ export default function AddProduct() {
                     <div className="col-md-10 offset-md-1">
 
                         <form id="request" className={styles.main_form}
-                            onSubmit={submitHandler}>
+                            onSubmit={onSubmit}>
                             <div className="row">
                                 <div className="col-md-12 ">
                                     <label className={styles.label} htmlFor="type">Избери тип:</label>
                                     <select className={styles.contactus}
-                                        name="type" id="type" onChange={changeHandler} value={formValues.type}>
+                                        name="type" id="type" onChange={onChange} value={values.type}>
                                         <option value="Лаптоп">Лаптоп</option>
                                         <option value="Таблет">Таблет</option>
                                         <option value="Телефон">Телефон</option>
@@ -158,8 +142,8 @@ export default function AddProduct() {
                                         type="text"
                                         name="model"
                                         id="model"
-                                        value={formValues.model}
-                                        onChange={changeHandler}
+                                        value={values.model}
+                                        onChange={onChange}
                                         onBlur={modelValidator}
                                     />
 
@@ -174,8 +158,8 @@ export default function AddProduct() {
                                         type="number"
                                         name="year"
                                         id="year"
-                                        value={formValues.year}
-                                        onChange={changeHandler}
+                                        value={values.year}
+                                        onChange={onChange}
                                         onBlur={yearValidator}
                                     />
 
@@ -190,8 +174,8 @@ export default function AddProduct() {
                                         type="text"
                                         name="description"
                                         id="description"
-                                        value={formValues.description}
-                                        onChange={changeHandler}
+                                        value={values.description}
+                                        onChange={onChange}
                                         onBlur={descriptionValidator}
                                     />
 
@@ -206,8 +190,8 @@ export default function AddProduct() {
                                         type="number"
                                         name="price"
                                         id="price"
-                                        value={formValues.price}
-                                        onChange={changeHandler}
+                                        value={values.price}
+                                        onChange={onChange}
                                         onBlur={priceValidator}
                                     />
 
@@ -222,8 +206,8 @@ export default function AddProduct() {
                                         type="text"
                                         name="img"
                                         id="img"
-                                        value={formValues.img}
-                                        onChange={changeHandler}
+                                        value={values.img}
+                                        onChange={onChange}
                                         onBlur={imgValidator}
                                     />
 
@@ -238,8 +222,8 @@ export default function AddProduct() {
                                         type="text"
                                         name="os"
                                         id="os"
-                                        value={formValues.os}
-                                        onChange={changeHandler}
+                                        value={values.os}
+                                        onChange={onChange}
                                         onBlur={osValidator}
                                     />
 
@@ -250,7 +234,7 @@ export default function AddProduct() {
                                 <div className="col-md-12">
                                     <button className={styles.send_btn} type="submit"
                                         disabled={(Object.values(errors).some(x => x)
-                                            || (Object.values(formValues).some(x => x == '')))}
+                                            || (Object.values(values).some(x => x == '')))}
                                     >Създай</button>
                                 </div>
                             </div>
