@@ -1718,7 +1718,7 @@
     			model: "Samsung Galaxy Tab A9",
     			year: 2023,
     			description: "Galaxy Tab A9, който има размер на екрана от 8,7 инча, предлага разделителна способност от 800 x 1340 пиксела и плътност на пикселите от приблизително 179 PPI на TFT LCD екран. Таблетът, който включва процесор MediaTek Helio G99 и графичен процесор Mali-G57 MC2, е с размери 211 x 124,7 x 8 mm.",
-    			price: 222,
+    			price: 250,
     			img: "https://www.kaksepravi.org/wp-content/uploads/2023/10/harakterisrika-i-tsena-na-samsung-galaxy-tab-a9.jpg",
     			os: "Android OS",
     			_createdOn: 1615545572296,

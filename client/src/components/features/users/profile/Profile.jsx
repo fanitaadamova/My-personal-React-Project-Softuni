@@ -12,6 +12,7 @@ export default function Profile() {
     const { auth } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
     const [ownProducts, setOwnProducts] = useState([]);
+    const [boughtProductIds, setBoughtProductIds] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -21,12 +22,17 @@ export default function Profile() {
             .catch((err) => console.log(err))
             .finally(() => setIsLoading(false));
 
-        //TODO: get array with productId of bought product by auth._id
-        purchaseAPI.getALLPuchases()
-            .then(res => console.log(res.filter(x => x._ownerId == auth._id)))
+        //NEW endpoint - get array with Product Id of bought products
+        purchaseAPI.getPurchasesproductIdsByUser(auth._id)
+            .then(res => setBoughtProductIds(res))
             .catch(err => console.log(err));
 
     }, [auth]);
+
+
+
+    console.log(boughtProductIds);
+
 
     return (
         <>
@@ -86,8 +92,6 @@ export default function Profile() {
                     </div>
                 </div>
 
-
-
                 <div className={styles.three_box}>
                     <div className="container">
                         <div className={styles.titlepage}>
@@ -119,6 +123,7 @@ export default function Profile() {
 
                     </div>
                 </div>
+
             </section>
 
 

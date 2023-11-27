@@ -19,6 +19,8 @@ import Accessories from './components/features/home/accessories/Accessories';
 import Profile from './components/features/users/profile/Profile';
 import EditProduct from './components/features/products/edit-product/EditProduct';
 import Search from './components/features/products/search/Search';
+import AuthGuard from './components/guards/AuthGuard';
+import GuestGuard from './components/guards/GuestGuard';
 
 
 
@@ -28,6 +30,7 @@ function App() {
     < AuthProvider >
       < Header />
       <main id="site-content">
+
         < Routes>
           <Route path='/' element={<HomeProducts />} />
           <Route path='/catalog' element={<Catalog />} />
@@ -37,21 +40,22 @@ function App() {
           <Route path='/smart-watches' element={< SmartWatches />} />
           <Route path='/accessories' element={< Accessories />} />
           < Route path='/search' element={< Search />} />
-
           <Route path='/details/:productId' element={<ProductDetails />} />
-          <Route path='/edit/:productId' element={< EditProduct />} />
 
-          <Route path='/login' element={<LoginForm />} />
-          <Route path='/register' element={<RegisterForm />} />
-          <Route path='/profile' element={< Profile />} />
-          <Route path='/add-product' element={<AddProduct />} />
+          < Route element={< AuthGuard />} >
+            <Route path='/edit/:productId' element={< EditProduct />} />
+            <Route path='/add-product' element={<AddProduct />} />
+            <Route path='/profile' element={< Profile />} />
+          </Route>
+
+          < Route element={< GuestGuard />} >
+            <Route path='/login' element={<LoginForm />} />
+            <Route path='/register' element={<RegisterForm />} />
+          </Route>
+
           <Route path='*' element={<NotFound />} />
-
-          {/*  Route element={<GuardedRoute />}>
-                      <Route path="/edit/:productId" element={<Edit />} />
-                    </Route>   */}
-
         </Routes>
+
       </main>
       < Footer />
     </AuthProvider>
