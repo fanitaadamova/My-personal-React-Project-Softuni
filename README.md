@@ -34,11 +34,14 @@ image.png
 
 ### Home page
 Public page for all users.
-Showes baner - products by category. 
+
+Showes baner - products by category (there are 5 categories - each button goes to the page with products from the corresponding category). 
+
 Showes latest 3 created ads. 
 There is a button with link to Catalog page with all ads.
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/8b21e1c9-3eb3-4a5f-9225-9f623c23a510)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/022bc90f-75eb-40da-8931-e1c524ad342b)
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/cf8863ec-729c-4bdb-a4b6-9278488ece28)
 
