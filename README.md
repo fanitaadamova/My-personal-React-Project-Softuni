@@ -92,6 +92,7 @@ Valid data in this case is:
  - All fields are requared.
 The "Създай" button should be disabled if the inputs are NOT valid.
 
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/282589fc-ff77-421d-a201-beab0956ca4c)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/95d8eb3c-c722-42d3-98ce-d088bc5aeea0)
+
 
 
