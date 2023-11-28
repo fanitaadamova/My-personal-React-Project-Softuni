@@ -48,7 +48,7 @@ Showes baner - products by category (there are 5 categories - each button goes t
 
 
 #### Under the banner there is a section, which showes latest 3 created ads: 
-There is a button with link to Catalog page with all ads.
+The button "Виж всички оферти" goes to Catalog page with all ads.
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/75b7d633-5d26-4b27-a5a1-4f67182dbd9d)
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/df149101-b78e-4597-9f26-943da207475a)
