@@ -10,6 +10,7 @@ import formInitialState from '../utils/initialFormValues';
 
 export default function AddProduct() {
     const navigate = useNavigate();
+    
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
 

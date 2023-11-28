@@ -4,6 +4,10 @@
     background-size: 100% 100%;
     padding: 15em 0;
 }
+.product  div {
+    max-width: 1400px;
+       margin: 0 auto;
+}
 
 .titlepage {
     text-align: center;
@@ -30,6 +34,8 @@
 
 
 .main_form {
+    display: flex;
+    align-items: center;
     padding: 70px 50px;
     border: black solid 2px;
     margin: 0 50px;
@@ -124,6 +130,6 @@ textarea {
 }
 
 .product .main_form input,
-.product .main_form select{
+.product .main_form select {
     background-color: #fff;
 }

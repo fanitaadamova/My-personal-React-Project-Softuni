@@ -16,12 +16,15 @@ export const getBuyersOfProduct = async (productId) => {
     return result;
 };
 
-//NEW endpoint
-export const getPurchasesproductIdsByUser = async (userId) => {
-    const result = await request.get(`${baseURL}`)
-        .then(res => res
-            .filter(x => x._ownerId == userId)
-            .map(x => x.productId));
+
+export const getBoughtProducts = async (userId) => {
+    const query = new URLSearchParams({
+        where: `userId="${userId}"`,
+        load: `productId=productId:technique`,
+    });
+  
+    const result = await request.get(`${baseURL}?${query}`);
+    console.log(result);
 
     return result;
 };

@@ -8,23 +8,27 @@ img {
     height: auto;
 }
 
-.three_box {
+.three_box,
+.created_products,
+.bought_products {
     background-color: #fff;
     padding-top: 90px;
 }
 
 
-.three_box .col-md-4 {
+.three_box .col-md-4,
+.created_products .col-md-4,
+.bought_products .col-md-4 {
     padding: 1em;
 }
 
 .titlepage h2 {
     text-align: center;
-    font-size: 2.5em;
-   
+    font-size: 2em;
+
 }
 
-.dummy{
+.dummy {
     margin: 0 auto;
     border: 1px solid #48ca95;
     width: 35ch;
@@ -35,12 +39,12 @@ img {
 
 .no_technique {
     width: auto;
-    height: 50vh;
+    height: 30vh;
     text-align: center;
-    margin: 5em auto;
+    margin: 3em auto;
 }
 
 .no_content {
     margin: 5em auto;
-    font-size: 2em;
+    font-size: 1.5em;
 }

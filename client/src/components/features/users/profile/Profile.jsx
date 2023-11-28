@@ -12,7 +12,7 @@ export default function Profile() {
     const { auth } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
     const [ownProducts, setOwnProducts] = useState([]);
-    const [boughtProductIds, setBoughtProductIds] = useState([]);
+    const [boughtProduct, setBoughtProduct] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -22,21 +22,19 @@ export default function Profile() {
             .catch((err) => console.log(err))
             .finally(() => setIsLoading(false));
 
-        //NEW endpoint - get array with Product Id of bought products
-        purchaseAPI.getPurchasesproductIdsByUser(auth._id)
-            .then(res => setBoughtProductIds(res))
+
+            purchaseAPI.getBoughtProducts(auth._id)
+            .then(res => setBoughtProduct(res))
             .catch(err => console.log(err));
 
     }, [auth]);
 
 
-
-    console.log(boughtProductIds);
-
-
     return (
         <>
             <section className={styles.profile}>
+                {isLoading && < Loader />}
+
                 <div className="container py-5">
 
                     <div className="row">
@@ -92,13 +90,13 @@ export default function Profile() {
                     </div>
                 </div>
 
-                <div className={styles.three_box}>
+                <div className={styles.created_products}>
                     <div className="container">
                         <div className={styles.titlepage}>
                             <h2>Създадени оферти</h2>
                         </div>
                         <div className={styles.dummy}></div>
-                        {isLoading && < Loader />}
+                  
 
                         {ownProducts.length > 0
                             ? (<>
@@ -118,6 +116,38 @@ export default function Profile() {
                             </>)
                             : <div className={styles.no_technique}>
                                 <p className={styles.no_content}>Няма създадени оферти.</p>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+
+                <div className={styles.bought_products}>
+                    <div className="container">
+                        <div className={styles.titlepage}>
+                            <h2>Закупени продукти:</h2>
+                        </div>
+                        <div className={styles.dummy}></div>
+                    
+
+                        {boughtProduct.length > 0
+                            ? (<>
+                                <div className="row">
+                                    {boughtProduct.map(tech => (
+                                        < Product
+                                            productId={tech.productId._id}
+                                            key={tech.productId._id}
+                                            type={tech.productId.type}
+                                            model={tech.productId.model}
+                                            description={tech.productId.description}
+                                            price={tech.productId.price}
+                                            img={tech.productId.img}
+                                        />
+                                    ))}
+                                </div>
+                            </>)
+                            : <div className={styles.no_technique}>
+                                <p className={styles.no_content}>Няма закупени продукти.</p>
                             </div>
                         }
 

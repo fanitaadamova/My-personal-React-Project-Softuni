@@ -1723,7 +1723,19 @@
     			os: "Android OS",
     			_createdOn: 1615545572296,
     			_id: "f5929b5c-bca4-4026-8e6e-c09e73908f60"
-    		}
+    		},
+            "371e91a9-b76e-4c10-a5d7-5baeb2fa1416" : {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                type: "Смарт часовник",
+                model: "Apple Watch Series 8",
+                year: 2023,
+                description: "Размер\n41mm\nЦвят\nStarlight\nМодел\nGPS\nРазмер\n41 mm\nBand Type\nSport Loop\nРазмер на корпуса\n41mm\nМатерия\nАлуминий\nМатерия на каишката\nfluoroelastomer\n",
+                price: "699",
+                img: "https://istyle.bg/pub/media/catalog/product/cache/image/400x400/beff4985b56e3afdbeabfc89641a4582/c/z/czcs_watchs8_gps_q422_41mm_starlight_aluminum_starlight_sport_band_pdp_image_position-1_t_2_1.jpg",
+                os: "ios",
+                _createdOn: 1701183313033,
+                _id: "371e91a9-b76e-4c10-a5d7-5baeb2fa1416"
+            },
     	},
         purchases:{
            
