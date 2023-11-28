@@ -14,15 +14,15 @@ export default function Profile() {
     const [ownProducts, setOwnProducts] = useState([]);
     const [boughtProduct, setBoughtProduct] = useState([]);
     const [totalSum, setTotalSum] = useState(0);
-    const [errorMessage, setErrorMessage] = useState('');
-    //TODO: печатане на грешката
+
+
 
     useEffect(() => {
         setIsLoading(true);
 
         techniqueAPI.getMyOwnProducts(auth._id)
             .then((result) => setOwnProducts(result))
-            .catch((error) => setErrorMessage(error.message))
+            .catch((error) => console.log(error.message))
             .finally(() => setIsLoading(false));
 
 
@@ -36,7 +36,7 @@ export default function Profile() {
                 setTotalSum(sum);
 
             })
-            .catch(err => console.log(err));
+            .catch((error) => console.log(error.message));
 
 
     }, [auth]);
