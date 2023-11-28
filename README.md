@@ -75,4 +75,23 @@ Valid inputs in this case are:
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/85764948-171a-498d-a642-b47d28327134)
 
 
+### DEMO USERS
+  - peter@abv.bg       pass: 123456;
+
+
+
+### Add new product adds
+Page only for logged in users.
+Every logged in user can create a new add in the site.
+
+The form expects as input: type of product, model, year, description, price, image and os.
+Valid data in this case is:
+ -	Model and description- should be at least 5 characters long
+ -	The year must be greater than 2000.
+ -	The price must be a positive number.
+ - All fields are requared.
+The "Създай" button should be disabled if the inputs are NOT valid.
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/282589fc-ff77-421d-a201-beab0956ca4c)
+
 
