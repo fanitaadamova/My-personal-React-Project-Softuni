@@ -65,11 +65,14 @@ Valid inputs in this case are:
  - 	Username should be at least 5 symbols as well.
  - 	The valid Email address must be example@example.example
  - 	Password should be at least 5 symbols as well
- -	   Repeat password and password must be matched.
- -	   All fields must be requered.
- -	   Button is disabled, if some of fiels is empty or does not meet the conditions.
+ - 	Repeat password and password must be matched.
+ - 	All fields must be requered.
+ -    Button is disabled, if some of fiels is empty or does not meet the conditions.
+   
 
  ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/73c49041-9314-44e4-a049-bc2540fcd4c3)
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/85764948-171a-498d-a642-b47d28327134)
 
 
 
