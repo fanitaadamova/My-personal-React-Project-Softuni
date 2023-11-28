@@ -24,7 +24,6 @@ export const getBoughtProducts = async (userId) => {
     });
   
     const result = await request.get(`${baseURL}?${query}`);
-    console.log(result);
-
+ 
     return result;
 };

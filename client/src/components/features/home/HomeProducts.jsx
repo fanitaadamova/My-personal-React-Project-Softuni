@@ -11,12 +11,19 @@ import { Link } from 'react-router-dom';
 export default function HomeProducts() {
     const [technique, setTechnique] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
         techniqueAPI.getLastTree()
             .then(result => setTechnique(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            })
             .finally(() => setIsLoading(false));
 
     }, []);
@@ -30,7 +37,12 @@ export default function HomeProducts() {
                         <h2>Последни оферти</h2>
                     </div>
                     <div className={styles.dummy}></div>
+
                     {isLoading && < Loader />}
+
+                    {hasServerError && (
+                        <p className={styles.serverError}>Нещо се обърка :( </p>
+                    )}
 
                     {technique.length > 0
                         ? (

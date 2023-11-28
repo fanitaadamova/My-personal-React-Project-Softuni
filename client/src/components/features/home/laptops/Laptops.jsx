@@ -9,12 +9,19 @@ import Loader from "../../../shared/Loader";
 export default function Laptops() {
     const [laptops, setLaptops] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
         techniqueAPI.getAllLaptops()
             .then(result => setLaptops(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            })
             .finally(() => setIsLoading(false));
 
     }, []);
@@ -32,6 +39,10 @@ export default function Laptops() {
                 <div className="row">
 
                     {isLoading && < Loader />}
+                    
+                    {hasServerError && (
+                        <p className={styles.serverError}>Нещо се обърка :( </p>
+                    )}
 
                     {laptops.length > 0
                         ? (

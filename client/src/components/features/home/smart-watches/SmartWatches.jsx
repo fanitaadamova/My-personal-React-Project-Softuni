@@ -1,20 +1,27 @@
 import styles from './SmartWatches.module.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import * as techniqueAPI from '../../../../api/techniqueAPI';
 
-import Product from "../../../features/products/product/Product";
-import Loader from "../../../shared/Loader";
+import Product from '../../../features/products/product/Product';
+import Loader from '../../../shared/Loader';
 
 
 export default function SmartWatches() {
     const [watches, setWatches] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
         techniqueAPI.getAllSmartWatches()
             .then(result => setWatches(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            })
             .finally(() => setIsLoading(false));
 
     }, []);
@@ -28,10 +35,14 @@ export default function SmartWatches() {
                     <h2>Оферти за часовници</h2>
                 </div>
                 <div className={styles.dummy}></div>
-                
+
                 <div className="row">
 
                     {isLoading && < Loader />}
+
+                    {hasServerError && (
+                        <p className={styles.serverError}>Нещо се обърка :( </p>
+                    )}
 
                     {watches.length > 0
                         ? (

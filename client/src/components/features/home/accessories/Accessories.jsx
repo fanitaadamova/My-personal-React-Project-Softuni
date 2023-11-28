@@ -9,12 +9,19 @@ import Loader from "../../../shared/Loader";
 export default function Accessories() {
     const [accessories, setAccessories] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
         techniqueAPI.getAllAccessories()
             .then(result => setAccessories(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            })
             .finally(() => setIsLoading(false));
 
     }, []);
@@ -31,6 +38,10 @@ export default function Accessories() {
                 <div className="row">
 
                     {isLoading && < Loader />}
+
+                    {hasServerError && (
+                        <p className={styles.serverError}>Нещо се обърка :( </p>
+                    )}
 
                     {accessories.length > 0
                         ? (

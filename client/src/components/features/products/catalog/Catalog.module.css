@@ -84,3 +84,9 @@
     margin: 5em auto;
     font-size: 2em;
 }
+
+.serverError {
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: center;
+}

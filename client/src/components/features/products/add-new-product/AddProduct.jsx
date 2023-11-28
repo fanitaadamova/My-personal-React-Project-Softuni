@@ -10,9 +10,12 @@ import formInitialState from '../utils/initialFormValues';
 
 export default function AddProduct() {
     const navigate = useNavigate();
-    
+
     const [formValues, setFormValues] = useState(formInitialState);
     const [errors, setErrors] = useState({});
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
+
 
     const resetFormHandler = () => {
         setFormValues(formInitialState);
@@ -23,7 +26,12 @@ export default function AddProduct() {
 
         techniqueAPI.create(values)
             .then(() => navigate('/catalog'))
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            });
 
         resetFormHandler();
     };
@@ -238,6 +246,10 @@ export default function AddProduct() {
                                             || (Object.values(values).some(x => x == '')))}
                                     >Създай</button>
                                 </div>
+
+                                {hasServerError && (
+                                    <p className={styles.serverError}>Нещо се обърка :( </p>
+                                )}
                             </div>
                         </form>
                     </div>

@@ -35,7 +35,9 @@ img {
     margin-bottom: 4em;
 }
 
-
+.sum {
+    font-weight: bold;
+}
 
 .no_technique {
     width: auto;

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import * as techniqueAPI from '../../../../api/techniqueAPI';
-import  useForm  from '../../../../hooks/useForm';
+import useForm from '../../../../hooks/useForm';
 import Loader from '../../../shared/Loader';
 
 import formInitialState from '../utils/initialFormValues';
@@ -15,11 +15,20 @@ export default function EditProduct() {
     const [isLoading, setIsLoading] = useState(true);
     const [productInfo, setProductInfo] = useState(formInitialState);
     const [errors, setErrors] = useState({});
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     useEffect(() => {
+        setIsLoading(true);
+
         techniqueAPI.getOne(productId)
             .then(result => setProductInfo(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            })
             .finally(() => setIsLoading(false));
 
     }, [productId]);
@@ -28,7 +37,12 @@ export default function EditProduct() {
 
         techniqueAPI.edit(productId, values)
             .then(() => navigate('/catalog'))
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            });
 
     };
 
@@ -116,6 +130,10 @@ export default function EditProduct() {
     return (
         <div className={styles.product}>
             {isLoading && < Loader />}
+
+            {hasServerError && (
+                <p className={styles.serverError}>Нещо се обърка :( </p>
+            )}
 
             <div>
                 <div className="row">

@@ -18,25 +18,34 @@ export default function ProductDetails() {
     const [showDelete, setShowDelete] = useState(false);
     const [isBought, setIsBought] = useState(false);
     const [productDetails, setProductDetails] = useState({});
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
+
 
 
     useEffect(() => {
+
+        setIsLoading(true);
+
         techniqueAPI.getOne(productId)
             .then(result => setProductDetails(result))
             .catch(err => {
                 if (err.code == 404) { navigate('/not-found'); }
-                console.log(err);
+                console.log(err.message);
             })
             .finally(() => setIsLoading(false));
 
-        // purchaseAPI.getALLPuchases()
-        //     .then(res => res.filter(x => x.productId === productId && x._ownerId === auth._id)
-        //         .length > 0 ? setIsBought(true) : setIsBought(false))
-        //     .catch(err => console.log(err));
+
         if (auth) {
             purchaseAPI.getBuyersOfProduct(productId)
                 .then(result => result.includes(auth._id) ? setIsBought(true) : setIsBought(false))
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log();
+                    setHasServerError(true);
+                    setServerError(err.message);
+                    console.log(err.message);
+                })
+                .finally(() => setIsLoading(false));
         }
 
     }, [productId, auth, navigate]);
@@ -80,6 +89,10 @@ export default function ProductDetails() {
     return (
         <div className={styles.product_info}>
             {isLoading && < Loader />}
+
+            {hasServerError && (
+                <p className={styles.serverError}>Нещо се обърка :( </p>
+            )}
 
             {showDelete && (
                 <DeleteModal

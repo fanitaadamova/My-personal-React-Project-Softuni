@@ -1,19 +1,26 @@
 import styles from './Catalog.module.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import * as techniqueAPI from '../../../../api/techniqueAPI';
 
-import Product from "../product/Product";
-import Loader from "../../../shared/Loader";
+import Product from '../product/Product';
+import Loader from '../../../shared/Loader';
 
 export default function Catalog() {
     const [technique, setTechnique] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [hasServerError, setHasServerError] = useState(false);
+    const [serverError, setServerError] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
         techniqueAPI.getAll()
             .then(result => setTechnique(result))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log();
+                setHasServerError(true);
+                setServerError(err.message);
+                console.log(err.message);
+            })
             .finally(() => setIsLoading(false));
 
     }, []);
@@ -25,6 +32,10 @@ export default function Catalog() {
                 <div className="row">
 
                     {isLoading && < Loader />}
+
+                    {hasServerError && (
+                        <p className={styles.serverError}>Нещо се обърка :( </p>
+                    )}
 
                     {technique.length > 0
                         ? (

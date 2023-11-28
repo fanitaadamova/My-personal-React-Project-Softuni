@@ -13,19 +13,31 @@ export default function Profile() {
     const [isLoading, setIsLoading] = useState(false);
     const [ownProducts, setOwnProducts] = useState([]);
     const [boughtProduct, setBoughtProduct] = useState([]);
+    const [totalSum, setTotalSum] = useState(0);
+    const [errorMessage, setErrorMessage] = useState('');
+    //TODO: печатане на грешката
 
     useEffect(() => {
         setIsLoading(true);
 
         techniqueAPI.getMyOwnProducts(auth._id)
             .then((result) => setOwnProducts(result))
-            .catch((err) => console.log(err))
+            .catch((error) => setErrorMessage(error.message))
             .finally(() => setIsLoading(false));
 
 
-            purchaseAPI.getBoughtProducts(auth._id)
-            .then(res => setBoughtProduct(res))
+        purchaseAPI.getBoughtProducts(auth._id)
+            .then(res => {
+                setBoughtProduct(res);
+
+                const sum = res.reduce((accumulator, x) => {
+                    return accumulator + Number(x.productId.price);
+                }, 0);
+                setTotalSum(sum);
+
+            })
             .catch(err => console.log(err));
+
 
     }, [auth]);
 
@@ -96,7 +108,7 @@ export default function Profile() {
                             <h2>Създадени оферти</h2>
                         </div>
                         <div className={styles.dummy}></div>
-                  
+
 
                         {ownProducts.length > 0
                             ? (<>
@@ -125,10 +137,10 @@ export default function Profile() {
                 <div className={styles.bought_products}>
                     <div className="container">
                         <div className={styles.titlepage}>
-                            <h2>Закупени продукти:</h2>
+                            <h2>Направени покупки <span className={styles.sum}>{totalSum} BGN</span></h2>
                         </div>
                         <div className={styles.dummy}></div>
-                    
+
 
                         {boughtProduct.length > 0
                             ? (<>
@@ -144,6 +156,7 @@ export default function Profile() {
                                             img={tech.productId.img}
                                         />
                                     ))}
+
                                 </div>
                             </>)
                             : <div className={styles.no_technique}>

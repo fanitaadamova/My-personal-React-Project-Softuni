@@ -97,3 +97,9 @@
     width: 47ch;
     margin-bottom: 4em;
 }
+
+.serverError {
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: center;
+}
