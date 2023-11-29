@@ -15,12 +15,14 @@ export default function Header() {
 
     try {
       await authAPI.logout();
-
       setAuth(null);
-      navigate('/');
 
+      navigate('/');
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      setAuth(null);
+      
+      navigate('/login');
     }
 
   }

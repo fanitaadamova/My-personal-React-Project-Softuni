@@ -21,45 +21,47 @@ import EditProduct from './components/features/products/edit-product/EditProduct
 import Search from './components/features/products/search/Search';
 import AuthGuard from './components/guards/AuthGuard';
 import GuestGuard from './components/guards/GuestGuard';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 
 
 
 function App() {
 
   return (
-    < AuthProvider >
-      < Header />
-      <main id="site-content">
+    < ErrorBoundary >
+      < AuthProvider >
 
-        < Routes>
-          <Route path='/' element={<HomeProducts />} />
-          <Route path='/catalog' element={<Catalog />} />
-          <Route path='/laptops' element={< Laptops />} />
-          <Route path='/tablets' element={< Tablets />} />
-          <Route path='/phones' element={< Phones />} />
-          <Route path='/smart-watches' element={< SmartWatches />} />
-          <Route path='/accessories' element={< Accessories />} />
-          < Route path='/search' element={< Search />} />
-          <Route path='/details/:productId' element={<ProductDetails />} />
+        < Header />
+        <main id="site-content">
+          < Routes>
+            <Route path='/' element={<HomeProducts />} />
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/laptops' element={< Laptops />} />
+            <Route path='/tablets' element={< Tablets />} />
+            <Route path='/phones' element={< Phones />} />
+            <Route path='/smart-watches' element={< SmartWatches />} />
+            <Route path='/accessories' element={< Accessories />} />
+            <Route path='/search' element={< Search />} />
+            <Route path='/details/:productId' element={<ProductDetails />} />
 
-          < Route element={< AuthGuard />} >
-            <Route path='/edit/:productId' element={< EditProduct />} />
-            <Route path='/add-product' element={<AddProduct />} />
-            <Route path='/profile' element={< Profile />} />
-          </Route>
+            < Route element={< AuthGuard />} >
+              <Route path='/edit/:productId' element={< EditProduct />} />
+              <Route path='/add-product' element={<AddProduct />} />
+              <Route path='/profile' element={< Profile />} />
+            </Route>
 
-          < Route element={< GuestGuard />} >
-            <Route path='/login' element={<LoginForm />} />
-            <Route path='/register' element={<RegisterForm />} />
-          </Route>
+            < Route element={< GuestGuard />} >
+              <Route path='/login' element={<LoginForm />} />
+              <Route path='/register' element={<RegisterForm />} />
+            </Route>
 
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </main>
+        < Footer />
 
-      </main>
-      < Footer />
-    </AuthProvider>
-
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 
