@@ -46,7 +46,7 @@ export default function Search() {
                 {/* Начало на форма за търсене */}
                 <form action="POST" >
                     <i className="fa fa-search" aria-hidden="true" />
-                    <label htmlFor="search" className={styles.label} >Търсене</label>
+                    <label htmlFor="search" className={styles.label} >Т</label>
                     <input type="text"
                         name="search"
                         value={searchValue.search}

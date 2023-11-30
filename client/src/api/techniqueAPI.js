@@ -16,7 +16,7 @@ export const getAllLaptops = async () => {
     });
 
     const result = await request.get(`${baseURL}?${query}`);
-    //  const result = await request.get(`${baseURL}?where=type%3D%22Лаптоп%22`);
+
     return Object.values(result);
 };
 
@@ -63,11 +63,12 @@ export const getAllAccessories = async () => {
     return Object.values(result);
 };
 
-//TODO: да фактурирам с qyery string
+
 export const getLastTree = async () => {
-    const result = await request.get(baseURL);
-    const data = result.slice(-3).reverse();
-    return data;
+    const query = new URLSearchParams('offset=0&pageSize=3');
+    const result = await request.get(`${baseURL}?sortBy=_createdOn%20desc&${query}`);
+
+    return result;
 };
 
 export const getOne = async (productId) => {
@@ -90,13 +91,13 @@ export const remove = async (productId) => {
 
 export const edit = async (productId, productData) => {
     const result = await request.put(`${baseURL}/${productId}`, productData);
-   
+
     return result;
 };
 
 export const getMyOwnProducts = async (userId) => {
     const result = await request.get(`${baseURL}?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
-      
+
     return result;
 };
 

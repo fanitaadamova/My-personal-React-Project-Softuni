@@ -50,7 +50,7 @@ export default function EditProduct() {
         if (values.model.length < 5) {
             setErrors(state => ({
                 ...state,
-                model: 'Модела трябва да бъде минимум 5 символа!',
+                model: 'Модела трябва да бъде минимум 5 символа',
             }));
         } else {
             if (errors.model) {
@@ -63,7 +63,7 @@ export default function EditProduct() {
         if (Number(values.year) < 2000) {
             setErrors(state => ({
                 ...state,
-                year: 'Годината трябва да бъде над 2000!',
+                year: 'Годината трябва да бъде число над 2000',
             }));
         } else {
             if (errors.year) {
@@ -76,7 +76,7 @@ export default function EditProduct() {
         if (Number(values.price) <= 0) {
             setErrors(state => ({
                 ...state,
-                price: 'Цената трябва да бъде по-голяма от 0!',
+                price: 'Цената трябва да бъде число по-голяма от 0',
             }));
         } else {
             if (errors.price) {
@@ -89,7 +89,7 @@ export default function EditProduct() {
         if (values.description.length < 5) {
             setErrors(state => ({
                 ...state,
-                description: 'Описанието на продукта трябва да бъде минимум 5 символа!',
+                description: 'Описанието на продукта трябва да бъде минимум 5 символа',
             }));
         } else {
             if (errors.description) {
@@ -102,7 +102,7 @@ export default function EditProduct() {
         if (values.os.length < 1) {
             setErrors(state => ({
                 ...state,
-                os: 'Полето е задължително!',
+                os: 'Полето е задължително',
             }));
         } else {
             if (errors.os) {
@@ -115,7 +115,7 @@ export default function EditProduct() {
         if (values.img.length < 1) {
             setErrors(state => ({
                 ...state,
-                img: 'Полето е задължително!',
+                img: 'Полето е задължително',
             }));
         } else {
             if (errors.img) {

@@ -137,7 +137,7 @@ export default function Profile() {
                 <div className={styles.bought_products}>
                     <div className="container">
                         <div className={styles.titlepage}>
-                            <h2>Направени покупки <span className={styles.sum}>{totalSum} BGN</span></h2>
+                            <h2>Покупки -  <span className={styles.sum}>{totalSum} BGN</span></h2>
                         </div>
                         <div className={styles.dummy}></div>
 
