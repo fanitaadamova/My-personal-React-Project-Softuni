@@ -103,4 +103,31 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/95d8eb3c-c722-42d3-98ce-d088bc5aeea0)
 
 
+### Profile page
+Page only for logged in users
+Profile page contains:
+ -  personal account information for user;
+ -  list with own created adds with link to the details of theme;
+ -  information about the total amount of purchases;
+ -  list with all bought products with link to the details of theme.
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2e7a8c5e-9362-4e6e-a29d-2889be8614d5)
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/87d63653-7fa9-4c8e-9c08-0bd01ef979cb)
+
+
+
+
+
+### Search page
+Public page for all users.
+Search by name of product  - case insensitive and dynamic search on typed character input 
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/11d87c06-c893-4f08-827d-5aacf2271eae)
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/ffc600ef-5c00-4865-a411-39a8d4fed622)
+
+
+
+
 
