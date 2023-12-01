@@ -54,7 +54,7 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/df149101-b78e-4597-9f26-943da207475a)
 
 
-##### CRUD Operations
+##### CRUD OPERATIONS
 
  - GET to endpoint HOST/data/:collection
    The service return array of all products in technique collection;
