@@ -129,149 +129,151 @@ export default function EditProduct() {
 
     return (
         <div className={styles.product}>
-            {isLoading && < Loader />}
-
-            {hasServerError && (
-                <p className={styles.serverError}>Нещо се обърка :( </p>
-            )}
-
             <div>
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className={styles.titlepage}>
-                            <h2>Промяна на оферта</h2>
+                {isLoading && < Loader />}
+
+                {hasServerError && (
+                    <p className={styles.serverError}>Нещо се обърка :( </p>
+                )}
+
+                <div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className={styles.titlepage}>
+                                <h2>Промяна на оферта</h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-10 offset-md-1">
+                    <div className="row">
+                        <div className="col-md-10 offset-md-1">
 
-                        <form id="request" method='POST' className={styles.main_form}
-                            onSubmit={onSubmit}>
-                            <div className="row">
-                                <div className="col-md-12 ">
-                                    <label className={styles.label} htmlFor="type">Избери тип:</label>
-                                    <select className={styles.contactus}
-                                        name="type" id="type"
-                                        onChange={onChange}
-                                        value={values.type}>
-                                        <option value="Лаптоп">Лаптоп</option>
-                                        <option value="Таблет">Таблет</option>
-                                        <option value="Телефон">Телефон</option>
-                                        <option value="Смарт часовник">Смарт часовник</option>
-                                        <option value="Аксесоар">Аксесоар</option>
-                                    </select>
-                                </div>
-                                <div className="col-md-12">
-                                    <label htmlFor="model" className={styles.label}>Модел:</label>
-                                    <input
-                                        className={styles.contactus}
-                                        placeholder="Модел"
-                                        type="text"
-                                        name="model"
-                                        id="model"
-                                        value={values.model}
-                                        onChange={onChange}
-                                        onBlur={modelValidator}
-                                    />
+                            <form id="request" method='POST' className={styles.main_form}
+                                onSubmit={onSubmit}>
+                                <div className="row">
+                                    <div className="col-md-12 ">
+                                        <label className={styles.label} htmlFor="type">Избери тип:</label>
+                                        <select className={styles.contactus}
+                                            name="type" id="type"
+                                            onChange={onChange}
+                                            value={values.type}>
+                                            <option value="Лаптоп">Лаптоп</option>
+                                            <option value="Таблет">Таблет</option>
+                                            <option value="Телефон">Телефон</option>
+                                            <option value="Смарт часовник">Смарт часовник</option>
+                                            <option value="Аксесоар">Аксесоар</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="model" className={styles.label}>Модел:</label>
+                                        <input
+                                            className={styles.contactus}
+                                            placeholder="Модел"
+                                            type="text"
+                                            name="model"
+                                            id="model"
+                                            value={values.model}
+                                            onChange={onChange}
+                                            onBlur={modelValidator}
+                                        />
 
-                                    {errors.model && (
-                                        <p className={styles.errorMessage}>{errors.model}</p>
-                                    )}
-                                </div>
-                                <div className="col-md-12">
-                                    <label htmlFor="year" className={styles.label} >Година:</label>
-                                    <input
-                                        className={styles.contactus}
-                                        placeholder="Година"
-                                        type="number"
-                                        name="year"
-                                        id="year"
-                                        value={values.year}
-                                        onChange={onChange}
-                                        onBlur={yearValidator}
-                                    />
+                                        {errors.model && (
+                                            <p className={styles.errorMessage}>{errors.model}</p>
+                                        )}
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="year" className={styles.label} >Година:</label>
+                                        <input
+                                            className={styles.contactus}
+                                            placeholder="Година"
+                                            type="number"
+                                            name="year"
+                                            id="year"
+                                            value={values.year}
+                                            onChange={onChange}
+                                            onBlur={yearValidator}
+                                        />
 
-                                    {errors.year && (
-                                        <p className={styles.errorMessage}>{errors.year}</p>
-                                    )}
-                                </div>
-                                <div className="col-md-12">
-                                    <label htmlFor="description" className={styles.label} >Описание:</label>
-                                    <textarea
-                                        className={styles.description}
-                                        placeholder="Описание"
-                                        type="text"
-                                        name="description"
-                                        id="description"
-                                        value={values.description}
-                                        onChange={onChange}
-                                        onBlur={descriptionValidator}
-                                    />
+                                        {errors.year && (
+                                            <p className={styles.errorMessage}>{errors.year}</p>
+                                        )}
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="description" className={styles.label} >Описание:</label>
+                                        <textarea
+                                            className={styles.description}
+                                            placeholder="Описание"
+                                            type="text"
+                                            name="description"
+                                            id="description"
+                                            value={values.description}
+                                            onChange={onChange}
+                                            onBlur={descriptionValidator}
+                                        />
 
-                                    {errors.description && (
-                                        <p className={styles.errorMessage}>{errors.description}</p>
-                                    )}
-                                </div>
-                                <div className="col-md-12">
-                                    <label htmlFor="price" className={styles.label} >Цена:</label>
-                                    <input
-                                        className={styles.contactus}
-                                        placeholder="Цена"
-                                        type="number"
-                                        name="price"
-                                        id="price"
-                                        value={values.price}
-                                        onChange={onChange}
-                                        onBlur={priceValidator}
-                                    />
+                                        {errors.description && (
+                                            <p className={styles.errorMessage}>{errors.description}</p>
+                                        )}
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="price" className={styles.label} >Цена:</label>
+                                        <input
+                                            className={styles.contactus}
+                                            placeholder="Цена"
+                                            type="number"
+                                            name="price"
+                                            id="price"
+                                            value={values.price}
+                                            onChange={onChange}
+                                            onBlur={priceValidator}
+                                        />
 
-                                    {errors.price && (
-                                        <p className={styles.errorMessage}>{errors.price}</p>
-                                    )}
-                                </div>
-                                <div className="col-md-12">
-                                    <label htmlFor="img" className={styles.label} >Добави снимка:</label>
-                                    <input
-                                        className={styles.contactus}
-                                        type="text"
-                                        name="img"
-                                        id="img"
-                                        value={values.img}
-                                        onChange={onChange}
-                                        onBlur={imgValidator}
-                                    />
+                                        {errors.price && (
+                                            <p className={styles.errorMessage}>{errors.price}</p>
+                                        )}
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="img" className={styles.label} >Добави снимка:</label>
+                                        <input
+                                            className={styles.contactus}
+                                            type="text"
+                                            name="img"
+                                            id="img"
+                                            value={values.img}
+                                            onChange={onChange}
+                                            onBlur={imgValidator}
+                                        />
 
-                                    {errors.img && (
-                                        <p className={styles.errorMessage}>{errors.img}</p>
-                                    )}
-                                </div>
-                                <div className="col-md-12">
-                                    <label htmlFor="os" className={styles.label} >Операционна система:</label>
-                                    <input
-                                        className={styles.contactus}
-                                        placeholder="Операционна система"
-                                        type="text"
-                                        name="os"
-                                        id="os"
-                                        value={values.os}
-                                        onChange={onChange}
-                                        onBlur={osValidator}
-                                    />
+                                        {errors.img && (
+                                            <p className={styles.errorMessage}>{errors.img}</p>
+                                        )}
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label htmlFor="os" className={styles.label} >Операционна система:</label>
+                                        <input
+                                            className={styles.contactus}
+                                            placeholder="Операционна система"
+                                            type="text"
+                                            name="os"
+                                            id="os"
+                                            value={values.os}
+                                            onChange={onChange}
+                                            onBlur={osValidator}
+                                        />
 
-                                    {errors.os && (
-                                        <p className={styles.errorMessage}>{errors.os}</p>
-                                    )}
-                                </div>
-                                <div className="col-md-12">
-                                    <button className={styles.send_btn} type="submit"
-                                        disabled={(Object.values(errors).some(x => x)
-                                            || (Object.values(values).some(x => x == '')))}
+                                        {errors.os && (
+                                            <p className={styles.errorMessage}>{errors.os}</p>
+                                        )}
+                                    </div>
+                                    <div className="col-md-12">
+                                        <button className={styles.send_btn} type="submit"
+                                            disabled={(Object.values(errors).some(x => x)
+                                                || (Object.values(values).some(x => x == '')))}
 
-                                    >Запази</button>
+                                        >Запази</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
