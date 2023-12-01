@@ -122,7 +122,7 @@ textarea {
     resize: none;
 }
 
-.product .main_form input,
+.product .main_form .contactus,
 .product .main_form select{
     background-color: #fff;
 }

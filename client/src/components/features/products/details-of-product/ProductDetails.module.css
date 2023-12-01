@@ -53,7 +53,7 @@
     display: block;
 }
 
-.buttons{
+.buttons {
     padding-top: 2em;
 }
 
@@ -87,13 +87,81 @@
     transition: ease-in all 0.5s;
 }
 
-.buttons .alreadyBought{
+.buttons .alreadyBought {
     font-size: 2em;
-    color:  #48ca95;;
+    color: #48ca95;
+    ;
 }
 
 .serverError {
     padding: 1em;
     font-size: 1.5em;
     text-align: center;
+}
+
+/* -----------Comments--------------- */
+.comments {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 50px 10px;
+}
+
+.create_comment {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create_comment label {
+    color: #121010;
+}
+
+
+.comment_info {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.comment_info .email {
+    color: grey;
+}
+
+
+.details_comments h2 {
+
+    font-size: 2em;
+    text-align: center;
+    padding: 1em 0 2em 0;
+}
+
+.form textarea {
+    border: #48ca95 solid 1px;
+    border-radius: 0.3em;
+    width: 100ch;
+    height: auto;
+}
+
+.no_comment {
+    text-align: center;
+}
+
+.btn_submit {
+    border: #48ca95 solid 1px;
+    padding: 0 1.5em;
+    background-color: #48ca95;
+    color: #fff;
+    border-radius: 0.3em;
+}
+
+.btn_submit:hover {
+    background-color: black;
+}
+
+.btn_submit:disabled{
+    opacity: 0.7;
 }
