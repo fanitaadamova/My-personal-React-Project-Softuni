@@ -89,6 +89,7 @@ export default function ProductDetails() {
 
     let isOwner = false;
     let isLogdin = false;
+    
 
     if (auth) {
         if (productDetails._ownerId === auth._id) {

@@ -1,4 +1,7 @@
 .product_info {
+    max-width: 1400px;
+    height: 100vh;
+    margin: 0 auto;
     padding: 15em 10em 15em 10em;
 }
 
