@@ -117,11 +117,6 @@ Profile page contains:
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2469109a-946d-445b-bd5d-f847e7b0e861)
 
 
-
-
-
-
-
 ### Search page
 Public page for all users.
 Search by name of product  - case insensitive and dynamic search on typed character input 
@@ -131,6 +126,34 @@ Search by name of product  - case insensitive and dynamic search on typed charac
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/ffc600ef-5c00-4865-a411-39a8d4fed622)
 
 
+### Product deatails page
+The page there are two parts - public and private(for logged in users).
+1. Public part: 
+ - all users can see product info and comments, but not to buy, edit, delete product or to add a new comment.
+   
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/d0932e67-4a61-4a7f-b514-5ec3b90b2d7d)
+
+
+
+
+2. Private part - only for logged in users:   
+   - Can buy every product only once. If the product was already bought, the user wiil see message;
+   - Can posts a new comment;
+   - If the user is owner of post, it sees edit and delete buttons.
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/9fad5850-9694-4dfa-9e61-356f4ad4db2d)
+
+
+
+
+#### Theme deatails - delete post
+
+![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/f2224863-2f3f-4928-8468-c57e2a1c5653)
+
+
+#### Theme deatails - edit post
+
+![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/15798f91-b80b-42c3-b6aa-fb7cadfeaf7f)
 
 
 
