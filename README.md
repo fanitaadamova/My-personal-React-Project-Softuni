@@ -53,6 +53,17 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/df149101-b78e-4597-9f26-943da207475a)
 
+
+#### CRUD Operations
+
+ - GET to endpoint HOST/data/:collection
+   The service return array of all products in technique collection;
+
+ - GET to endpoint HOST/data/:collection?where=type={match} 
+       *for example: GET  http://localhost:3030/data/technique?where=type="Лаптоп"
+    Append where={match} to the query parameters, where {match} is a URL-encoded string of comma-separated entries in format propName=value. Only full matches returned.
+
+
 ### Login page
 
 The login form expects as input: email and password.
