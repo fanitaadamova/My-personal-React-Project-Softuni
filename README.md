@@ -146,14 +146,16 @@ The page there are two parts - public and private(for logged in users).
 
 
 
-#### Theme deatails - delete post
+#### Product deatails - delete product
 
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/f2224863-2f3f-4928-8468-c57e2a1c5653)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/640f7d18-09ee-4530-a94a-d0f08ba23188)
 
 
-#### Theme deatails - edit post
 
-![image](https://github.com/fanitaadamova/My-personal-Angular-Project-Softuni/assets/113979211/15798f91-b80b-42c3-b6aa-fb7cadfeaf7f)
+#### Product deatails - edit information
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/7a627883-5299-4b82-b10e-b4d085de4ced)
+
 
 
 
