@@ -113,7 +113,10 @@ Profile page contains:
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2e7a8c5e-9362-4e6e-a29d-2889be8614d5)
 
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/87d63653-7fa9-4c8e-9c08-0bd01ef979cb)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/c754ebe0-2f66-424e-abf7-10b9970b7b15)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2469109a-946d-445b-bd5d-f847e7b0e861)
+
+
 
 
 
