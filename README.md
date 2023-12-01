@@ -59,7 +59,7 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
  - GET to endpoint HOST/data/:collection
    The service return array of all products in technique collection;
 
- - GET to endpoint HOST/data/:collection?where=type={match} 
+ - GET to endpoint HOST/data/:collection?where=type={match}                      
        *for example: GET  http://localhost:3030/data/technique?where=type="Лаптоп"
     Append where={match} to the query parameters, where {match} is a URL-encoded string of comma-separated entries in format propName=value. Only full matches returned.
 
