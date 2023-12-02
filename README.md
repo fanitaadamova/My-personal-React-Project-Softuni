@@ -13,7 +13,14 @@ Used a Softuni Practice server for back-end.
    - npm run dev - runs the app in development mode;
    - open http://localhost:5173 to view it in the browser.
 
+## Deployment
+- Project DEMO - https://tech-site-six.vercel.app
+- Link to repository with deployed version code - https://github.com/fanitaadamova/Tech-site-version-with-deploy
+- Used:
+  - Vercel for the frontend deployment;
+  - Render for the backend deployment;
 
+    
 ## Site overview 
 ### Every page contains navigation
  - NON logged in user
