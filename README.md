@@ -92,6 +92,16 @@ Valid inputs in this case are:
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/85764948-171a-498d-a642-b47d28327134)
 
+#### Authorization and CRUD OPERATIONS
+ - POST to endpoint HOST/users/login
+ - POST to endpoint HOST/users/register
+ - GET  to endpoint HOST/users/logout
+   
+ - User can login in system after successful registration with email and password.
+ - The service automatically creates a session and returns an authorization token, that will be used for requests. The session is stored in browser's Local storage. 
+ - Path for registration and login is stored in authAPI.js file
+ - Registration require username, valid email, telephone number and password.
+
 
 ### DEMO USERS
   - peter@abv.bg       pass: 123456;
