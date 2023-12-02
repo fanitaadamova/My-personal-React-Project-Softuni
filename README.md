@@ -97,10 +97,10 @@ Valid inputs in this case are:
  - POST to endpoint HOST/users/register
  - GET  to endpoint HOST/users/logout
    
- - User can login in system after successful registration with email and password.
- - The service automatically creates a session and returns an authorization token, that will be used for requests. The session is stored in browser's Local storage. 
- - Path for registration and login is stored in authAPI.js file
- - Registration require username, valid email, telephone number and password.
+  User can login in system after successful registration with email and password.
+  The service automatically creates a session and returns an authorization token, that will be used for requests. The session is stored in browser's Local storage. 
+  Path for registration and login is stored in authAPI.js file
+  Registration require username, valid email, telephone number and password.
 
 
 ### DEMO USERS
