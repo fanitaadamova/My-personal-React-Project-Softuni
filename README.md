@@ -5,7 +5,7 @@ Used a Softuni Practice server for back-end.
 
 ## Steps for local instalation and review:
 1. Clone the repository: https://github.com/fanitaadamova/My-personal-React-Project-Softuni.git
-2. Navigate to server folder (cd server;):
+2. Navigate to server folder (cd server):
    - npm install - command for install all packages dependances;
    - node server.js - command to start the back-en server;
 4. Navigate to client folder(cd client):
@@ -53,6 +53,17 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/df149101-b78e-4597-9f26-943da207475a)
 
+
+##### CRUD OPERATIONS
+
+ - GET to endpoint HOST/data/:collection
+   The service return array of all products in technique collection;
+
+ - GET to endpoint HOST/data/:collection?where=type={match}                      
+       *for example: GET  http://localhost:3030/data/technique?where=type="Лаптоп"
+    Append where={match} to the query parameters, where {match} is a URL-encoded string of comma-separated entries in format propName=value. Only full matches returned.
+
+
 ### Login page
 
 The login form expects as input: email and password.
@@ -80,6 +91,16 @@ Valid inputs in this case are:
  ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/73c49041-9314-44e4-a049-bc2540fcd4c3)
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/85764948-171a-498d-a642-b47d28327134)
+
+#### Authorization and CRUD OPERATIONS
+ - POST to endpoint HOST/users/login
+ - POST to endpoint HOST/users/register
+ - GET  to endpoint HOST/users/logout
+   
+    - User can login in system after successful registration with email and password.
+    - The service automatically creates a session and returns an authorization token, that will be used for requests. The session is stored in browser's Local storage. 
+    - Path for registration and login is stored in authAPI.js file
+    - Registration require username, valid email, telephone number and password.
 
 
 ### DEMO USERS
