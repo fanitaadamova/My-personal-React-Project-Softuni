@@ -17,8 +17,12 @@ Used a Softuni Practice server for back-end.
 - Project DEMO - https://tech-site-six.vercel.app
 - Link to repository with deployed version code - https://github.com/fanitaadamova/Tech-site-version-with-deploy
 - Used:
-  - Vercel for the frontend deployment;
+  - Vercel for the frontend deployment. 
   - Render for the backend deployment;
+
+## Project Structure and Architecture
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/7b72e65c-3214-406e-a016-da5b45126ab9)
 
     
 ## Site overview 
