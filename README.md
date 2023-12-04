@@ -138,7 +138,7 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 ##### CRUD OPERATIONS
 
  - POST to endpoint HOST/data/:collection                               
-   To create new entry. ID will be generated automatically and will be included in the returned object. 
+   The request will create new entry. ID will be generated automatically and will be included in the returned object. 
 
    
 ### Profile page
@@ -196,7 +196,7 @@ The page there are two parts - public and private(for logged in users).
   The service returns array of all comments in comments collection by productId.
 
 - POST to endpoint HOST/data/:collection                               
-   To create new entry in comments collection.
+  The request will create new entry in comments collection.
 
 #### Product deatails - delete product
 
