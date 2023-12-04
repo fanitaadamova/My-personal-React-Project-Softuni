@@ -68,7 +68,7 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 ##### CRUD OPERATIONS
 
  - GET to endpoint HOST/data/:collection
-   The service return array of all products in technique collection;
+   The service returns array of all products in technique collection;
 
  - GET to endpoint HOST/data/:collection?where=type={match}                      
        *for example: GET  http://localhost:3030/data/technique?where=type="Лаптоп"
@@ -138,7 +138,7 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 ##### CRUD OPERATIONS
 
  - GET to endpoint HOST/data/:collection/:id                               
-   The service return entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
+   The service returns entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
  - PUT to endpoint HOST/data/:collection/:id                                          
    This request requires authorization and to update a single entry (the existing entry will be replaced). Only the owner of the resource can edit it.
 
@@ -156,6 +156,13 @@ Profile page contains:
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/c754ebe0-2f66-424e-abf7-10b9970b7b15)
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2469109a-946d-445b-bd5d-f847e7b0e861)
 
+
+##### CRUD OPERATIONS
+
+ - GET to endpoint HOST/data/:collection?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc                  
+   The service returns array of all created products in technique collection by userId.
+ - GET to endpoint HOST/data/:collection?${query}           
+   The service returns array of all bought products in technique collection by userId.
 
 ### Search page
 Public page for all users.
