@@ -227,7 +227,7 @@ The page there are two parts - public and private(for logged in users).
    comments or make purchases.
 
  - Auth guard                       
-   The applicatio redirects to home page when already authenticated user tries to access login or register page.
+   The application redirects to home page when already authenticated user tries to access login, register, profile or add new product page.
    
  - Undefined routes                        
    Not fond page is implemented to handle undefined routes.
