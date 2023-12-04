@@ -77,11 +77,11 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 
 ### Login page
 
-The login form expects as input: email and password.
+The login form expects as input: email and password. Button is disabled, if some of fiels is empty or does not meet the conditions.
 Valid credentials in this case are:
  -	The valid Email address must be example@example.example.
  -	Password should be at least 5 symbols as well.
- -	Button is disabled, if some of fiels is empty or does not meet the conditions.
+
    
   ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2495792e-d634-4d71-ba3a-1b6ad251c9b4)
 
@@ -89,14 +89,14 @@ Valid credentials in this case are:
 
 ### Register page
 
-The register form expects as input: username, email, mobile number, password and repeat password.
+The register form expects as input: username, email, mobile number, password and repeat password. Button is disabled, if some of fiels is empty or does not meet the conditions.
 Valid inputs in this case are:
  - 	Username should be at least 5 symbols as well.
  - 	The valid Email address must be example@example.example
  - 	Password should be at least 5 symbols as well
  - 	Repeat password and password must be matched.
  - 	All fields must be requered.
- -    Button is disabled, if some of fiels is empty or does not meet the conditions.
+
    
 
  ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/73c49041-9314-44e4-a049-bc2540fcd4c3)
