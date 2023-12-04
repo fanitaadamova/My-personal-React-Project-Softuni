@@ -135,6 +135,14 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/95d8eb3c-c722-42d3-98ce-d088bc5aeea0)
 
 
+##### CRUD OPERATIONS
+
+ - GET to endpoint HOST/data/:collection/:id
+   The service return entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
+ - PUT to endpoint HOST/data/:collection/:id
+   This request requires authorization and to update a single entry (the existing entry will be replaced). Only the owner of the resource can edit it.
+
+   
 ### Profile page
 Page only for logged in users
 Profile page contains:
