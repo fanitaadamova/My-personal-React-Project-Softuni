@@ -137,10 +137,8 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 
 ##### CRUD OPERATIONS
 
- - GET to endpoint HOST/data/:collection/:id                               
-   The service returns entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
- - PUT to endpoint HOST/data/:collection/:id                                          
-   This request requires authorization and to update a single entry (the existing entry will be replaced). Only the owner of the resource can edit it.
+ - POST to endpoint HOST/data/:collection                               
+   To create new entry. ID will be generated automatically and will be included in the returned object. 
 
    
 ### Profile page
@@ -182,7 +180,6 @@ The page there are two parts - public and private(for logged in users).
 
 
 
-
 2. Private part - only for logged in users:   
    - Can buy every product only once. If the product was already bought, the user wiil see message;
    - Can posts a new comment;
@@ -190,13 +187,25 @@ The page there are two parts - public and private(for logged in users).
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/9fad5850-9694-4dfa-9e61-356f4ad4db2d)
 
+##### CRUD OPERATIONS
 
+ - GET to endpoint HOST/data/:collection/:id                               
+   The service returns entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
 
+- GET to endpoint HOST/data/:collection?${query}
+  The service returns array of all comments in comments collection by productId.
+
+- POST to endpoint HOST/data/:collection                               
+   To create new entry in comments collection.
 
 #### Product deatails - delete product
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/640f7d18-09ee-4530-a94a-d0f08ba23188)
 
+
+##### CRUD OPERATIONS
+
+ - DELETE to endpoint HOST/data/:collection/:id         
 
 
 #### Product deatails - edit information
@@ -204,5 +213,10 @@ The page there are two parts - public and private(for logged in users).
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/7a627883-5299-4b82-b10e-b4d085de4ced)
 
 
+##### CRUD OPERATIONS
 
+ - GET to endpoint HOST/data/:collection/:id                               
+   The service returns entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
+ - PUT to endpoint HOST/data/:collection/:id                                          
+   This request requires authorization and to update a single entry (the existing entry will be replaced). Only the owner of the resource can edit it.
 
