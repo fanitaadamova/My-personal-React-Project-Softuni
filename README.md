@@ -67,8 +67,8 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 
 ##### CRUD OPERATIONS
 
- - GET to endpoint HOST/data/:collection
-   The service returns array of all products in technique collection;
+ - GET to endpoint HOST/data/:collection                     
+   The service returns array of all products in technique collection.
 
  - GET to endpoint HOST/data/:collection?where=type={match}                      
        *for example: GET  http://localhost:3030/data/technique?where=type="Лаптоп"
