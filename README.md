@@ -222,11 +222,11 @@ The page there are two parts - public and private(for logged in users).
 
 
 ## Security and Guards
- - Guеsts guard
+ - Guеsts guard                         
    The application requires the user to be authenticated in order to create classifieds for sale of equipment, post comments or make purchases.
- - Auth guard
+ - Auth guard                       
    The applicatio redirects to home page when already authenticated user tries to access login or register page.
- - Undefined routes
+ - Undefined routes                        
    Not fond page is implemented to handle undefined routes.
    ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/b301f662-8d69-4cd9-a0f3-6ccf165ca025)
 
