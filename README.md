@@ -137,9 +137,9 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 
 ##### CRUD OPERATIONS
 
- - GET to endpoint HOST/data/:collection/:id
+ - GET to endpoint HOST/data/:collection/:id                               
    The service return entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
- - PUT to endpoint HOST/data/:collection/:id
+ - PUT to endpoint HOST/data/:collection/:id                                          
    This request requires authorization and to update a single entry (the existing entry will be replaced). Only the owner of the resource can edit it.
 
    
