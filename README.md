@@ -46,7 +46,7 @@ image.png
 ### Home page
 Public page for all users.
 
-Showes baner - products by category (there are 5 categories - each button goes to the page with products from the corresponding category). 
+The baner contains products by category (there are 5 categories - each button goes to the page with products from the corresponding category). 
 
 
 
