@@ -1,10 +1,11 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('http'), require('fs'), require('crypto')) :
-    typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
-}(this, (function (http, fs, crypto) { 'use strict';
+        typeof define === 'function' && define.amd ? define(['http', 'fs', 'crypto'], factory) :
+            (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Server = factory(global.http, global.fs, global.crypto));
+}(this, (function (http, fs, crypto) {
+    'use strict';
 
-    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+    function _interopDefaultLegacy(e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
     var http__default = /*#__PURE__*/_interopDefaultLegacy(http);
     var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
@@ -13,14 +14,14 @@
     class ServiceError extends Error {
         constructor(message = 'Service Error') {
             super(message);
-            this.name = 'ServiceError'; 
+            this.name = 'ServiceError';
         }
     }
 
     class NotFoundError extends ServiceError {
         constructor(message = 'Resource not found') {
             super(message);
-            this.name = 'NotFoundError'; 
+            this.name = 'NotFoundError';
             this.status = 404;
         }
     }
@@ -28,7 +29,7 @@
     class RequestError extends ServiceError {
         constructor(message = 'Request error') {
             super(message);
-            this.name = 'RequestError'; 
+            this.name = 'RequestError';
             this.status = 400;
         }
     }
@@ -36,7 +37,7 @@
     class ConflictError extends ServiceError {
         constructor(message = 'Resource conflict') {
             super(message);
-            this.name = 'ConflictError'; 
+            this.name = 'ConflictError';
             this.status = 409;
         }
     }
@@ -44,7 +45,7 @@
     class AuthorizationError extends ServiceError {
         constructor(message = 'Unauthorized') {
             super(message);
-            this.name = 'AuthorizationError'; 
+            this.name = 'AuthorizationError';
             this.status = 401;
         }
     }
@@ -52,7 +53,7 @@
     class CredentialError extends ServiceError {
         constructor(message = 'Forbidden') {
             super(message);
-            this.name = 'CredentialError'; 
+            this.name = 'CredentialError';
             this.status = 403;
         }
     }
@@ -557,8 +558,8 @@
             if (query.pageSize) {
                 responseData = responseData.slice(0, pageSize);
             }
-    		
-    		if (query.distinct) {
+
+            if (query.distinct) {
                 const props = query.distinct.split(',').filter(p => p != '');
                 responseData = Object.values(responseData.reduce((distinct, c) => {
                     const key = props.map(p => c[p]).join('::');
@@ -794,7 +795,7 @@
     }
 
     function onRequest(context, tokens, query, body) {
-        Object.entries(body).forEach(([k,v]) => {
+        Object.entries(body).forEach(([k, v]) => {
             console.log(`${k} ${v ? 'enabled' : 'disabled'}`);
             context.util[k] = v;
         });
@@ -932,7 +933,7 @@
          * @param {Object} data Value to store. Shallow merge will be performed!
          * @return {Object} Updated entry.
          */
-         function merge(collection, id, data) {
+        function merge(collection, id, data) {
             if (!collections.has(collection)) {
                 throw new ReferenceError('Collection does not exist: ' + collection);
             }
@@ -1320,411 +1321,445 @@
     var identity = "email";
     // TODO: Object USER data
     var protectedData = {
-    	users: {
-    		"35c62d76-8152-4626-8712-eeb96381bea8": {
+        users: {
+            "35c62d76-8152-4626-8712-eeb96381bea8": {
                 username: 'Peter',
-    			email: "peter@abv.bg",
+                email: "peter@abv.bg",
                 phone: '0888888123',
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
-    		},
-    		"847ec027-f659-4086-8032-5173e2f9c93a": {
-    			username: "George",
-    			email: "george@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+            },
+            "847ec027-f659-4086-8032-5173e2f9c93a": {
+                username: "George",
+                email: "george@abv.bg",
                 phone: '0888789456',
-    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
-    		},
-    		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-    			username: "Admin",
-    			email: "admin@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+            },
+            "847ec027-f659-4086-8032-5173e8f9c87a": {
+                username: "Viktor",
+                email: "viktor@abv.bg",
+                phone: '0888789123',
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+            },
+            "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+                username: "Admin",
+                email: "admin@abv.bg",
                 phone: '0885789456',
-    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
-    		}
-    	},
-    	sessions: {
-    	}
+                hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
+            }
+        },
+        sessions: {
+        }
     };
     // TODO: Object USER data
     var seedData = {
-    	recipes: {
-    		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Easy Lasagna",
-    			img: "assets/lasagna.jpg",
-    			ingredients: [
-    				"1 tbsp Ingredient 1",
-    				"2 cups Ingredient 2",
-    				"500 g  Ingredient 3",
-    				"25 g Ingredient 4"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551279012
-    		},
-    		"8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Grilled Duck Fillet",
-    			img: "assets/roast.jpg",
-    			ingredients: [
-    				"500 g  Ingredient 1",
-    				"3 tbsp Ingredient 2",
-    				"2 cups Ingredient 3"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551344360
-    		},
-    		"985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Roast Trout",
-    			img: "assets/fish.jpg",
-    			ingredients: [
-    				"4 cups Ingredient 1",
-    				"1 tbsp Ingredient 2",
-    				"1 tbsp Ingredient 3",
-    				"750 g  Ingredient 4",
-    				"25 g Ingredient 5"
-    			],
-    			steps: [
-    				"Prepare ingredients",
-    				"Mix ingredients",
-    				"Cook until done"
-    			],
-    			_createdOn: 1613551388703
-    		}
-    	},
-    	comments: {
-    		"0a272c58-b7ea-4e09-a000-7ec988248f66": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			content: "Great recipe!",
-    			recipeId: "8f414b4f-ab39-4d36-bedb-2ad69da9c830",
-    			_createdOn: 1614260681375,
-    			_id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
-    		}
-    	},
-    	records: {
-    		i01: {
-    			name: "John1",
-    			val: 1,
-    			_createdOn: 1613551388703
-    		},
-    		i02: {
-    			name: "John2",
-    			val: 1,
-    			_createdOn: 1613551388713
-    		},
-    		i03: {
-    			name: "John3",
-    			val: 2,
-    			_createdOn: 1613551388723
-    		},
-    		i04: {
-    			name: "John4",
-    			val: 2,
-    			_createdOn: 1613551388733
-    		},
-    		i05: {
-    			name: "John5",
-    			val: 2,
-    			_createdOn: 1613551388743
-    		},
-    		i06: {
-    			name: "John6",
-    			val: 3,
-    			_createdOn: 1613551388753
-    		},
-    		i07: {
-    			name: "John7",
-    			val: 3,
-    			_createdOn: 1613551388763
-    		},
-    		i08: {
-    			name: "John8",
-    			val: 2,
-    			_createdOn: 1613551388773
-    		},
-    		i09: {
-    			name: "John9",
-    			val: 3,
-    			_createdOn: 1613551388783
-    		},
-    		i10: {
-    			name: "John10",
-    			val: 1,
-    			_createdOn: 1613551388793
-    		}
-    	},
-    	catches: {
-    		"07f260f4-466c-4607-9a33-f7273b24f1b4": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			angler: "Paulo Admorim",
-    			weight: 636,
-    			species: "Atlantic Blue Marlin",
-    			location: "Vitoria, Brazil",
-    			bait: "trolled pink",
-    			captureTime: 80,
-    			_createdOn: 1614760714812,
-    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
-    		},
-    		"bdabf5e9-23be-40a1-9f14-9117b6702a9d": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			angler: "John Does",
-    			weight: 554,
-    			species: "Atlantic Blue Marlin",
-    			location: "Buenos Aires, Argentina",
-    			bait: "trolled pink",
-    			captureTime: 120,
-    			_createdOn: 1614760782277,
-    			_id: "bdabf5e9-23be-40a1-9f14-9117b6702a9d"
-    		}
-    	},
-    	furniture: {
-"1240549d-f0e0-497e-ab99-eb8f522513d7": {
-        "img":"https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
-        "name": "Sofa",
-        "price": "259",
-        "decFactor":"0.4"
+        recipes: {
+            "3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Easy Lasagna",
+                img: "assets/lasagna.jpg",
+                ingredients: [
+                    "1 tbsp Ingredient 1",
+                    "2 cups Ingredient 2",
+                    "500 g  Ingredient 3",
+                    "25 g Ingredient 4"
+                ],
+                steps: [
+                    "Prepare ingredients",
+                    "Mix ingredients",
+                    "Cook until done"
+                ],
+                _createdOn: 1613551279012
+            },
+            "8f414b4f-ab39-4d36-bedb-2ad69da9c830": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Grilled Duck Fillet",
+                img: "assets/roast.jpg",
+                ingredients: [
+                    "500 g  Ingredient 1",
+                    "3 tbsp Ingredient 2",
+                    "2 cups Ingredient 3"
+                ],
+                steps: [
+                    "Prepare ingredients",
+                    "Mix ingredients",
+                    "Cook until done"
+                ],
+                _createdOn: 1613551344360
+            },
+            "985d9eab-ad2e-4622-a5c8-116261fb1fd2": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                name: "Roast Trout",
+                img: "assets/fish.jpg",
+                ingredients: [
+                    "4 cups Ingredient 1",
+                    "1 tbsp Ingredient 2",
+                    "1 tbsp Ingredient 3",
+                    "750 g  Ingredient 4",
+                    "25 g Ingredient 5"
+                ],
+                steps: [
+                    "Prepare ingredients",
+                    "Mix ingredients",
+                    "Cook until done"
+                ],
+                _createdOn: 1613551388703
+            }
+        },
+        comments: {
+            "0a272c58-b7ea-4e09-a000-7ec988248f66": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                productId: "371e91a9-b76e-4c10-a5d7-5baeb2fa1969",
+                text: "Great product!",
+                _createdOn: 1614260681375,
+                _id: "0a272c58-b7ea-4e09-a000-7ec988248f66"
+            },
+            "2ae94ca6-063a-4b80-9f87-ed0e9f8dfa3a": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                productId: "371e91a9-b76e-4c10-a5d7-5baeb2fa1969",
+                text: "Батерията е доста слаба, едва издържа 24ч. при средно потребление. Това е най-големият недостатък. Приятен дизайн, но корпусът лесно се драска. Някои функции не работят добре, не се поддържат за съответния модел телефон или се интегрират само със Samsung устройства, или пък не се поддържат за българския пазар. Удобни функции като входящи/изходящи разговори. Липсват апове за Viber, teams, messenger т.е. може да се отговаря само на получени съобшщения, но не и да се инициират такива. ",
+                _createdOn: 1701810794739,
+                _id: "2ae94ca6-063a-4b80-9f87-ed0e9f8dfa3a"
+            },
+            "11b3dd3e-f5df-4562-a16a-e8f2957c4450": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                productId: "7cc99037-97eb-4af0-a041-4cd487c72cd7",
+                text: "На борда си разполага с чипсет Exynos 1380, който трябва да е с 25% по-високопроизводителен от предходния 1280 в А53. Към него има 8 GB RAM + 128 или 256 GB вградена памет + microSD слот. Тройната камера има нов 50 МР сензор, премахнат е дълбочинният сензор и има само още две други камери - 12 МР с ултраширок обхват и 5 МР за макро снимки. Поддържа се 4K видеозапис и с основната, и с предната камера. Батерията е с капацитет 5000 mAh с 25 W зареждане и може да бъде заредена за 30 минути до 50%. Моделът излиза с Android 13, покрит от най-актуалния One UI 5.1, като Samsung обещава 4 години ъпдейти на Android версията и 5 години ъпдейти по сигурността.",
+                _createdOn: 1701811740401,
+                _id: "11b3dd3e-f5df-4562-a16a-e8f2957c4450"
+            },
+            "a69b1554-3b8e-4981-91f3-92044373cfd7": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                productId: "371e91a9-b76e-4c10-a5d7-5baeb2fa1416",
+                text: "Apple Watch Series 8 е водоустойчив до 50 метра, което го прави идеален за потребители, които обичат да плуват или да се потапят. Това означава, че часовникът може да бъде носен в басейн, море или в други водни среди без никакви проблеми",
+                _createdOn: 1701812103562,
+                _id: "a69b1554-3b8e-4981-91f3-92044373cfd7"
+            },
+            "2c898d7f-96a8-4b26-8fd0-f9277a71678b": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                productId: "371e91a9-b76e-4c10-a5d7-5baeb2fa1416",
+                text: "Ползвам часовника от няколко месеца и е страхотен",
+                _createdOn: 1701812151882,
+                _id: "2c898d7f-96a8-4b26-8fd0-f9277a71678b"
+            }
+        },
+        records: {
+            i01: {
+                name: "John1",
+                val: 1,
+                _createdOn: 1613551388703
+            },
+            i02: {
+                name: "John2",
+                val: 1,
+                _createdOn: 1613551388713
+            },
+            i03: {
+                name: "John3",
+                val: 2,
+                _createdOn: 1613551388723
+            },
+            i04: {
+                name: "John4",
+                val: 2,
+                _createdOn: 1613551388733
+            },
+            i05: {
+                name: "John5",
+                val: 2,
+                _createdOn: 1613551388743
+            },
+            i06: {
+                name: "John6",
+                val: 3,
+                _createdOn: 1613551388753
+            },
+            i07: {
+                name: "John7",
+                val: 3,
+                _createdOn: 1613551388763
+            },
+            i08: {
+                name: "John8",
+                val: 2,
+                _createdOn: 1613551388773
+            },
+            i09: {
+                name: "John9",
+                val: 3,
+                _createdOn: 1613551388783
+            },
+            i10: {
+                name: "John10",
+                val: 1,
+                _createdOn: 1613551388793
+            }
+        },
+        catches: {
+            "07f260f4-466c-4607-9a33-f7273b24f1b4": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                angler: "Paulo Admorim",
+                weight: 636,
+                species: "Atlantic Blue Marlin",
+                location: "Vitoria, Brazil",
+                bait: "trolled pink",
+                captureTime: 80,
+                _createdOn: 1614760714812,
+                _id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
+            },
+            "bdabf5e9-23be-40a1-9f14-9117b6702a9d": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                angler: "John Does",
+                weight: 554,
+                species: "Atlantic Blue Marlin",
+                location: "Buenos Aires, Argentina",
+                bait: "trolled pink",
+                captureTime: 120,
+                _createdOn: 1614760782277,
+                _id: "bdabf5e9-23be-40a1-9f14-9117b6702a9d"
+            }
+        },
+        furniture: {
+            "1240549d-f0e0-497e-ab99-eb8f522513d7": {
+                "img": "https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
+                "name": "Sofa",
+                "price": "259",
+                "decFactor": "0.4"
 
-    },
-    "143e5265-333e-4150-80e4-53b61de31aa0": {
-        "img":"https://www.stylespafurniture.com/wp-content/uploads/2020/03/Cove_3_Door_Wardrobe_1.jpg",
-        "name": "Wardrobe",
-        "price": "120",
-        "decFactor":"1.2"
-    }
+            },
+            "143e5265-333e-4150-80e4-53b61de31aa0": {
+                "img": "https://www.stylespafurniture.com/wp-content/uploads/2020/03/Cove_3_Door_Wardrobe_1.jpg",
+                "name": "Wardrobe",
+                "price": "120",
+                "decFactor": "1.2"
+            }
 
-      	},
-    	orders: {
-    	},
-    	movies: {
-    		"1240549d-f0e0-497e-ab99-eb8f703713d7": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Black Widow",
-    			description: "Natasha Romanoff aka Black Widow confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Comes on the screens 2020.",
-    			img: "https://miro.medium.com/max/735/1*akkAa2CcbKqHsvqVusF3-w.jpeg",
-    			_createdOn: 1614935055353,
-    			_id: "1240549d-f0e0-497e-ab99-eb8f703713d7"
-    		},
-    		"143e5265-333e-4150-80e4-16b61de31aa0": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Wonder Woman 1984",
-    			description: "Diana must contend with a work colleague and businessman, whose desire for extreme wealth sends the world down a path of destruction, after an ancient artifact that grants wishes goes missing.",
-    			img: "https://pbs.twimg.com/media/ETINgKwWAAAyA4r.jpg",
-    			_createdOn: 1614935181470,
-    			_id: "143e5265-333e-4150-80e4-16b61de31aa0"
-    		},
-    		"a9bae6d8-793e-46c4-a9db-deb9e3484909": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			title: "Top Gun 2",
-    			description: "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
-    			img: "https://i.pinimg.com/originals/f2/a4/58/f2a458048757bc6914d559c9e4dc962a.jpg",
-    			_createdOn: 1614935268135,
-    			_id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
-    		}
-    	},
-    	likes: {
-    	},
-    	ideas: {
-    		"833e0e57-71dc-42c0-b387-0ce0caf5225e": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "Best Pilates Workout To Do At Home",
-    			description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima possimus eveniet ullam aspernatur corporis tempore quia nesciunt nostrum mollitia consequatur. At ducimus amet aliquid magnam nulla sed totam blanditiis ullam atque facilis corrupti quidem nisi iusto saepe, consectetur culpa possimus quos? Repellendus, dicta pariatur! Delectus, placeat debitis error dignissimos nesciunt magni possimus quo nulla, fuga corporis maxime minus nihil doloremque aliquam quia recusandae harum. Molestias dolorum recusandae commodi velit cum sapiente placeat alias rerum illum repudiandae? Suscipit tempore dolore autem, neque debitis quisquam molestias officia hic nesciunt? Obcaecati optio fugit blanditiis, explicabo odio at dicta asperiores distinctio expedita dolor est aperiam earum! Molestias sequi aliquid molestiae, voluptatum doloremque saepe dignissimos quidem quas harum quo. Eum nemo voluptatem hic corrupti officiis eaque et temporibus error totam numquam sequi nostrum assumenda eius voluptatibus quia sed vel, rerum, excepturi maxime? Pariatur, provident hic? Soluta corrupti aspernatur exercitationem vitae accusantium ut ullam dolor quod!",
-    			img: "./images/best-pilates-youtube-workouts-2__medium_4x3.jpg",
-    			_createdOn: 1615033373504,
-    			_id: "833e0e57-71dc-42c0-b387-0ce0caf5225e"
-    		},
-    		"247efaa7-8a3e-48a7-813f-b5bfdad0f46c": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			title: "4 Eady DIY Idea To Try!",
-    			description: "Similique rem culpa nemo hic recusandae perspiciatis quidem, quia expedita, sapiente est itaque optio enim placeat voluptates sit, fugit dignissimos tenetur temporibus exercitationem in quis magni sunt vel. Corporis officiis ut sapiente exercitationem consectetur debitis suscipit laborum quo enim iusto, labore, quod quam libero aliquid accusantium! Voluptatum quos porro fugit soluta tempore praesentium ratione dolorum impedit sunt dolores quod labore laudantium beatae architecto perspiciatis natus cupiditate, iure quia aliquid, iusto modi esse!",
-    			img: "./images/brightideacropped.jpg",
-    			_createdOn: 1615033452480,
-    			_id: "247efaa7-8a3e-48a7-813f-b5bfdad0f46c"
-    		},
-    		"b8608c22-dd57-4b24-948e-b358f536b958": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			title: "Dinner Recipe",
-    			description: "Consectetur labore et corporis nihil, officiis tempora, hic ex commodi sit aspernatur ad minima? Voluptas nesciunt, blanditiis ex nulla incidunt facere tempora laborum ut aliquid beatae obcaecati quidem reprehenderit consequatur quis iure natus quia totam vel. Amet explicabo quidem repellat unde tempore et totam minima mollitia, adipisci vel autem, enim voluptatem quasi exercitationem dolor cum repudiandae dolores nostrum sit ullam atque dicta, tempora iusto eaque! Rerum debitis voluptate impedit corrupti quibusdam consequatur minima, earum asperiores soluta. A provident reiciendis voluptates et numquam totam eveniet! Dolorum corporis libero dicta laborum illum accusamus ullam?",
-    			img: "./images/dinner.jpg",
-    			_createdOn: 1615033491967,
-    			_id: "b8608c22-dd57-4b24-948e-b358f536b958"
-    		}
-    	},
-    	catalog: {
-    		"53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			make: "Table",
-    			model: "Swedish",
-    			year: 2015,
-    			description: "Medium table",
-    			price: 235,
-    			img: "./images/table.png",
-    			material: "Hardwood",
-    			_createdOn: 1615545143015,
-    			_id: "53d4dbf5-7f41-47ba-b485-43eccb91cb95"
-    		},
-    		"f5929b5c-bca4-4026-8e6e-c09e73908f77": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			make: "Sofa",
-    			model: "ES-549-M",
-    			year: 2018,
-    			description: "Three-person sofa, blue",
-    			price: 1200,
-    			img: "./images/sofa.jpg",
-    			material: "Frame - steel, plastic; Upholstery - fabric",
-    			_createdOn: 1615545572296,
-    			_id: "f5929b5c-bca4-4026-8e6e-c09e73908f77"
-    		},
-    		"c7f51805-242b-45ed-ae3e-80b68605141b": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			make: "Chair",
-    			model: "Bright Dining Collection",
-    			year: 2017,
-    			description: "Dining chair",
-    			price: 180,
-    			img: "./images/chair.jpg",
-    			material: "Wood laminate; leather",
-    			_createdOn: 1615546332126,
-    			_id: "c7f51805-242b-45ed-ae3e-80b68605141b"
-    		}
-    	},
-    	teams: {
-    		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Storm Troopers",
-    			logoUrl: "/assets/atat.png",
-    			description: "These ARE the droids we're looking for",
-    			_createdOn: 1615737591748,
-    			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
-    		},
-    		"dc888b1a-400f-47f3-9619-07607966feb8": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Team Rocket",
-    			logoUrl: "/assets/rocket.png",
-    			description: "Gotta catch 'em all!",
-    			_createdOn: 1615737655083,
-    			_id: "dc888b1a-400f-47f3-9619-07607966feb8"
-    		},
-    		"733fa9a1-26b6-490d-b299-21f120b2f53a": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Minions",
-    			logoUrl: "/assets/hydrant.png",
-    			description: "Friendly neighbourhood jelly beans, helping evil-doers succeed.",
-    			_createdOn: 1615737688036,
-    			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
-    		}
-    	},
-    	members: {
-    		"cc9b0a0f-655d-45d7-9857-0a61c6bb2c4d": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
-    			status: "member",
-    			_createdOn: 1616236790262,
-    			_updatedOn: 1616236792930
-    		},
-    		"61a19986-3b86-4347-8ca4-8c074ed87591": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
-    			status: "member",
-    			_createdOn: 1616237188183,
-    			_updatedOn: 1616237189016
-    		},
-    		"8a03aa56-7a82-4a6b-9821-91349fbc552f": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			teamId: "733fa9a1-26b6-490d-b299-21f120b2f53a",
-    			status: "member",
-    			_createdOn: 1616237193355,
-    			_updatedOn: 1616237195145
-    		},
-    		"9be3ac7d-2c6e-4d74-b187-04105ab7e3d6": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
-    			status: "member",
-    			_createdOn: 1616237231299,
-    			_updatedOn: 1616237235713
-    		},
-    		"280b4a1a-d0f3-4639-aa54-6d9158365152": {
-    			_ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-    			teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
-    			status: "member",
-    			_createdOn: 1616237257265,
-    			_updatedOn: 1616237278248
-    		},
-    		"e797fa57-bf0a-4749-8028-72dba715e5f8": {
-    			_ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-    			teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
-    			status: "member",
-    			_createdOn: 1616237272948,
-    			_updatedOn: 1616237293676
-    		}
-    	},
+        },
+        orders: {
+        },
+        movies: {
+            "1240549d-f0e0-497e-ab99-eb8f703713d7": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Black Widow",
+                description: "Natasha Romanoff aka Black Widow confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises. Comes on the screens 2020.",
+                img: "https://miro.medium.com/max/735/1*akkAa2CcbKqHsvqVusF3-w.jpeg",
+                _createdOn: 1614935055353,
+                _id: "1240549d-f0e0-497e-ab99-eb8f703713d7"
+            },
+            "143e5265-333e-4150-80e4-16b61de31aa0": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Wonder Woman 1984",
+                description: "Diana must contend with a work colleague and businessman, whose desire for extreme wealth sends the world down a path of destruction, after an ancient artifact that grants wishes goes missing.",
+                img: "https://pbs.twimg.com/media/ETINgKwWAAAyA4r.jpg",
+                _createdOn: 1614935181470,
+                _id: "143e5265-333e-4150-80e4-16b61de31aa0"
+            },
+            "a9bae6d8-793e-46c4-a9db-deb9e3484909": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Top Gun 2",
+                description: "After more than thirty years of service as one of the Navy's top aviators, Pete Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.",
+                img: "https://i.pinimg.com/originals/f2/a4/58/f2a458048757bc6914d559c9e4dc962a.jpg",
+                _createdOn: 1614935268135,
+                _id: "a9bae6d8-793e-46c4-a9db-deb9e3484909"
+            }
+        },
+        likes: {
+        },
+        ideas: {
+            "833e0e57-71dc-42c0-b387-0ce0caf5225e": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "Best Pilates Workout To Do At Home",
+                description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima possimus eveniet ullam aspernatur corporis tempore quia nesciunt nostrum mollitia consequatur. At ducimus amet aliquid magnam nulla sed totam blanditiis ullam atque facilis corrupti quidem nisi iusto saepe, consectetur culpa possimus quos? Repellendus, dicta pariatur! Delectus, placeat debitis error dignissimos nesciunt magni possimus quo nulla, fuga corporis maxime minus nihil doloremque aliquam quia recusandae harum. Molestias dolorum recusandae commodi velit cum sapiente placeat alias rerum illum repudiandae? Suscipit tempore dolore autem, neque debitis quisquam molestias officia hic nesciunt? Obcaecati optio fugit blanditiis, explicabo odio at dicta asperiores distinctio expedita dolor est aperiam earum! Molestias sequi aliquid molestiae, voluptatum doloremque saepe dignissimos quidem quas harum quo. Eum nemo voluptatem hic corrupti officiis eaque et temporibus error totam numquam sequi nostrum assumenda eius voluptatibus quia sed vel, rerum, excepturi maxime? Pariatur, provident hic? Soluta corrupti aspernatur exercitationem vitae accusantium ut ullam dolor quod!",
+                img: "./images/best-pilates-youtube-workouts-2__medium_4x3.jpg",
+                _createdOn: 1615033373504,
+                _id: "833e0e57-71dc-42c0-b387-0ce0caf5225e"
+            },
+            "247efaa7-8a3e-48a7-813f-b5bfdad0f46c": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                title: "4 Eady DIY Idea To Try!",
+                description: "Similique rem culpa nemo hic recusandae perspiciatis quidem, quia expedita, sapiente est itaque optio enim placeat voluptates sit, fugit dignissimos tenetur temporibus exercitationem in quis magni sunt vel. Corporis officiis ut sapiente exercitationem consectetur debitis suscipit laborum quo enim iusto, labore, quod quam libero aliquid accusantium! Voluptatum quos porro fugit soluta tempore praesentium ratione dolorum impedit sunt dolores quod labore laudantium beatae architecto perspiciatis natus cupiditate, iure quia aliquid, iusto modi esse!",
+                img: "./images/brightideacropped.jpg",
+                _createdOn: 1615033452480,
+                _id: "247efaa7-8a3e-48a7-813f-b5bfdad0f46c"
+            },
+            "b8608c22-dd57-4b24-948e-b358f536b958": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                title: "Dinner Recipe",
+                description: "Consectetur labore et corporis nihil, officiis tempora, hic ex commodi sit aspernatur ad minima? Voluptas nesciunt, blanditiis ex nulla incidunt facere tempora laborum ut aliquid beatae obcaecati quidem reprehenderit consequatur quis iure natus quia totam vel. Amet explicabo quidem repellat unde tempore et totam minima mollitia, adipisci vel autem, enim voluptatem quasi exercitationem dolor cum repudiandae dolores nostrum sit ullam atque dicta, tempora iusto eaque! Rerum debitis voluptate impedit corrupti quibusdam consequatur minima, earum asperiores soluta. A provident reiciendis voluptates et numquam totam eveniet! Dolorum corporis libero dicta laborum illum accusamus ullam?",
+                img: "./images/dinner.jpg",
+                _createdOn: 1615033491967,
+                _id: "b8608c22-dd57-4b24-948e-b358f536b958"
+            }
+        },
+        catalog: {
+            "53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                make: "Table",
+                model: "Swedish",
+                year: 2015,
+                description: "Medium table",
+                price: 235,
+                img: "./images/table.png",
+                material: "Hardwood",
+                _createdOn: 1615545143015,
+                _id: "53d4dbf5-7f41-47ba-b485-43eccb91cb95"
+            },
+            "f5929b5c-bca4-4026-8e6e-c09e73908f77": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                make: "Sofa",
+                model: "ES-549-M",
+                year: 2018,
+                description: "Three-person sofa, blue",
+                price: 1200,
+                img: "./images/sofa.jpg",
+                material: "Frame - steel, plastic; Upholstery - fabric",
+                _createdOn: 1615545572296,
+                _id: "f5929b5c-bca4-4026-8e6e-c09e73908f77"
+            },
+            "c7f51805-242b-45ed-ae3e-80b68605141b": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                make: "Chair",
+                model: "Bright Dining Collection",
+                year: 2017,
+                description: "Dining chair",
+                price: 180,
+                img: "./images/chair.jpg",
+                material: "Wood laminate; leather",
+                _createdOn: 1615546332126,
+                _id: "c7f51805-242b-45ed-ae3e-80b68605141b"
+            }
+        },
+        teams: {
+            "34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Storm Troopers",
+                logoUrl: "/assets/atat.png",
+                description: "These ARE the droids we're looking for",
+                _createdOn: 1615737591748,
+                _id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
+            },
+            "dc888b1a-400f-47f3-9619-07607966feb8": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                name: "Team Rocket",
+                logoUrl: "/assets/rocket.png",
+                description: "Gotta catch 'em all!",
+                _createdOn: 1615737655083,
+                _id: "dc888b1a-400f-47f3-9619-07607966feb8"
+            },
+            "733fa9a1-26b6-490d-b299-21f120b2f53a": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                name: "Minions",
+                logoUrl: "/assets/hydrant.png",
+                description: "Friendly neighbourhood jelly beans, helping evil-doers succeed.",
+                _createdOn: 1615737688036,
+                _id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
+            }
+        },
+        members: {
+            "cc9b0a0f-655d-45d7-9857-0a61c6bb2c4d": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
+                status: "member",
+                _createdOn: 1616236790262,
+                _updatedOn: 1616236792930
+            },
+            "61a19986-3b86-4347-8ca4-8c074ed87591": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
+                status: "member",
+                _createdOn: 1616237188183,
+                _updatedOn: 1616237189016
+            },
+            "8a03aa56-7a82-4a6b-9821-91349fbc552f": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                teamId: "733fa9a1-26b6-490d-b299-21f120b2f53a",
+                status: "member",
+                _createdOn: 1616237193355,
+                _updatedOn: 1616237195145
+            },
+            "9be3ac7d-2c6e-4d74-b187-04105ab7e3d6": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
+                status: "member",
+                _createdOn: 1616237231299,
+                _updatedOn: 1616237235713
+            },
+            "280b4a1a-d0f3-4639-aa54-6d9158365152": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                teamId: "dc888b1a-400f-47f3-9619-07607966feb8",
+                status: "member",
+                _createdOn: 1616237257265,
+                _updatedOn: 1616237278248
+            },
+            "e797fa57-bf0a-4749-8028-72dba715e5f8": {
+                _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                teamId: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1",
+                status: "member",
+                _createdOn: 1616237272948,
+                _updatedOn: 1616237293676
+            }
+        },
         technique: {
-    		"53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			type: "Лаптоп",
-    			model: "HP NEX-SPR-LT-11HP250G9I3",
-    			year: 2020,
-    			description: "Лаптопът HP 250 G9 предоставя основни бизнес функции в тънък и лек дизайн, който е лесен за носене навсякъде. 15,6-инчовият диагонален дисплей с голямо съотношение екран към тяло, мощен процесор Intel, бърза памет и място за съхранение осигуряват производителност, докато включените портове свързват вашите периферни устройства - всичко това на цена, която можете да оцените.",
-    			price: 235,
-    			img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
-    			os: "Windows OS",
-    			_createdOn: 1615545143015,
-    			_id: "53d4dbf5-7f41-47ba-b485-43eccb91cb95"
-    		},
-    		"f5929b5c-bca4-4026-8e6e-c09e73908f77": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			type: "Таблет",
-    			model: "Samsung Galaxy Tab A9",
-    			year: 2023,
-    			description: "Galaxy Tab A9, който има размер на екрана от 8,7 инча, предлага разделителна способност от 800 x 1340 пиксела и плътност на пикселите от приблизително 179 PPI на TFT LCD екран. Таблетът, който включва процесор MediaTek Helio G99 и графичен процесор Mali-G57 MC2, е с размери 211 x 124,7 x 8 mm.",
-    			price: 222,
-    			img: "https://www.kaksepravi.org/wp-content/uploads/2023/10/harakterisrika-i-tsena-na-samsung-galaxy-tab-a9.jpg",
-    			os: "Android OS",
-    			_createdOn: 1615545572296,
-    			_id: "f5929b5c-bca4-4026-8e6e-c09e73908f77"
-    		},
-    		"c7f51805-242b-45ed-ae3e-80b68605141b": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			type: "Лаптоп",
-    			model: "GAMING League i5-6500",
-    			year: 2023,
-    			description: "Настолен компютър GAMING League QUADCore Intel i5-6500 3.6Ghz TURBO, 16GB RAM DDR4, 1000GB SSD, VIDEO 8GB GDDR5 Radeon RX+ Подарък (клавиатура, мишка).",
-    			price: 890,
-    			img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRTrx60Hp3T6J13JswX6F_6GqH89acg6ToiA&usqp=CAU",
-    			os: "Windows OS",
-    			_createdOn: 1615546332126,
-    			_id: "c7f51805-242b-45ed-ae3e-80b68605141b"
-    		},
-    		"c7f51805-242b-45ed-ae3e-80b686051498": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			type: "Телефон",
-    			model: "Samsung Galaxy s23 ultra",
-    			year: 2023,
-    			description: "Samsung Galaxy s23 ultra прави ясни снимки и видеоклипове от здрач до зори. Най-съвременният и усъвършенстван сензор на камерата и най-бързият процесор на Galaxy се справят отлично при слаба светлина и намаляват шума.",
-    			price: 1950,
-    			img: "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-ultra-5g.jpg",
-    			os: "Android OS",
-    			_createdOn: 1615546332126,
-    			_id: "c7f51805-242b-45ed-ae3e-80b686051498"
-    		},
+            "53d4dbf5-7f41-47ba-b485-43eccb91cb95": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                type: "Лаптоп",
+                model: "HP NEX-SPR-LT-11HP250G9I3",
+                year: 2020,
+                description: "Лаптопът HP 250 G9 предоставя основни бизнес функции в тънък и лек дизайн, който е лесен за носене навсякъде. 15,6-инчовият диагонален дисплей с голямо съотношение екран към тяло, мощен процесор Intel, бърза памет и място за съхранение осигуряват производителност, докато включените портове свързват вашите периферни устройства - всичко това на цена, която можете да оцените.",
+                price: 235,
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGNGXc-5Gry-xDhe1MdHyq_iip8Tc9W_rqTj2dk1mX8VtNkMtmHIfNvET_HRAVqTv8s74&usqp=CAU",
+                os: "Windows OS",
+                _createdOn: 1615545143015,
+                _id: "53d4dbf5-7f41-47ba-b485-43eccb91cb95"
+            },
+            "f5929b5c-bca4-4026-8e6e-c09e73908f77": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                type: "Таблет",
+                model: "Samsung Galaxy Tab A9",
+                year: 2023,
+                description: "Galaxy Tab A9, който има размер на екрана от 8,7 инча, предлага разделителна способност от 800 x 1340 пиксела и плътност на пикселите от приблизително 179 PPI на TFT LCD екран. Таблетът, който включва процесор MediaTek Helio G99 и графичен процесор Mali-G57 MC2, е с размери 211 x 124,7 x 8 mm.",
+                price: 222,
+                img: "https://www.kaksepravi.org/wp-content/uploads/2023/10/harakterisrika-i-tsena-na-samsung-galaxy-tab-a9.jpg",
+                os: "Android OS",
+                _createdOn: 1615545572296,
+                _id: "f5929b5c-bca4-4026-8e6e-c09e73908f77"
+            },
+            "c7f51805-242b-45ed-ae3e-80b68605141b": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                type: "Лаптоп",
+                model: "GAMING League i5-6500",
+                year: 2023,
+                description: "Настолен компютър GAMING League QUADCore Intel i5-6500 3.6Ghz TURBO, 16GB RAM DDR4, 1000GB SSD, VIDEO 8GB GDDR5 Radeon RX+ Подарък (клавиатура, мишка).",
+                price: 890,
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRTrx60Hp3T6J13JswX6F_6GqH89acg6ToiA&usqp=CAU",
+                os: "Windows OS",
+                _createdOn: 1615546332126,
+                _id: "c7f51805-242b-45ed-ae3e-80b68605141b"
+            },
+            "c7f51805-242b-45ed-ae3e-80b686051498": {
+                _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+                type: "Телефон",
+                model: "Samsung Galaxy s23 ultra",
+                year: 2023,
+                description: "Samsung Galaxy s23 ultra прави ясни снимки и видеоклипове от здрач до зори. Най-съвременният и усъвършенстван сензор на камерата и най-бързият процесор на Galaxy се справят отлично при слаба светлина и намаляват шума.",
+                price: 1950,
+                img: "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s23-ultra-5g.jpg",
+                os: "Android OS",
+                _createdOn: 1615546332126,
+                _id: "c7f51805-242b-45ed-ae3e-80b686051498"
+            },
             "f5929b5c-bca4-4026-8e6e-c09e73908f60": {
-    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			type: "Таблет",
-    			model: "Samsung Galaxy Tab A9",
-    			year: 2023,
-    			description: "Galaxy Tab A9, който има размер на екрана от 8,7 инча, предлага разделителна способност от 800 x 1340 пиксела и плътност на пикселите от приблизително 179 PPI на TFT LCD екран. Таблетът, който включва процесор MediaTek Helio G99 и графичен процесор Mali-G57 MC2, е с размери 211 x 124,7 x 8 mm.",
-    			price: 250,
-    			img: "https://www.kaksepravi.org/wp-content/uploads/2023/10/harakterisrika-i-tsena-na-samsung-galaxy-tab-a9.jpg",
-    			os: "Android OS",
-    			_createdOn: 1615545572296,
-    			_id: "f5929b5c-bca4-4026-8e6e-c09e73908f60"
-    		},
-            "371e91a9-b76e-4c10-a5d7-5baeb2fa1416" : {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                type: "Таблет",
+                model: "Samsung Galaxy Tab A9",
+                year: 2023,
+                description: "Galaxy Tab A9, който има размер на екрана от 8,7 инча, предлага разделителна способност от 800 x 1340 пиксела и плътност на пикселите от приблизително 179 PPI на TFT LCD екран. Таблетът, който включва процесор MediaTek Helio G99 и графичен процесор Mali-G57 MC2, е с размери 211 x 124,7 x 8 mm.",
+                price: 250,
+                img: "https://www.kaksepravi.org/wp-content/uploads/2023/10/harakterisrika-i-tsena-na-samsung-galaxy-tab-a9.jpg",
+                os: "Android OS",
+                _createdOn: 1615545572296,
+                _id: "f5929b5c-bca4-4026-8e6e-c09e73908f60"
+            },
+            "371e91a9-b76e-4c10-a5d7-5baeb2fa1416": {
                 _ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 type: "Смарт часовник",
                 model: "Apple Watch Series 8",
@@ -1732,42 +1767,72 @@
                 description: "Размер\n41mm\nЦвят\nStarlight\nМодел\nGPS\nРазмер\n41 mm\nBand Type\nSport Loop\nРазмер на корпуса\n41mm\nМатерия\nАлуминий\nМатерия на каишката\nfluoroelastomer\n",
                 price: "699",
                 img: "https://istyle.bg/pub/media/catalog/product/cache/image/400x400/beff4985b56e3afdbeabfc89641a4582/c/z/czcs_watchs8_gps_q422_41mm_starlight_aluminum_starlight_sport_band_pdp_image_position-1_t_2_1.jpg",
-                os: "ios",
+                os: "IOS",
                 _createdOn: 1701183313033,
                 _id: "371e91a9-b76e-4c10-a5d7-5baeb2fa1416"
             },
-    	},
-        purchases:{
-           
+            "371e91a9-b76e-4c10-a5d7-5baeb2fa1969": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                type: "Смарт часовник",
+                model: "Galaxy Watch5",
+                year: 2023,
+                description: "Водоустойчив 27, с по-здрав преден дисплей, изработен от първокласен сапфирен кристал, който е 1,6 пъти по-устойчив на надраскване. 28, 29 За да устои на всички предизвикателства, които ти сервира денят.Отнема около 30 минути, за да заредиш батерията от 0 до 45%. Да, правилно прочете. С по-голяма батерия от своите предшественици и бързо зареждане, няма да трябва да чакаш дълго преди да продължиш напред.",
+                price: "499",
+                img: "https://images.samsung.com/is/image/samsung/p6pim/bg/2208/gallery/bg-galaxy-watch5-40mm-sm-r900nzsaeue-533200400?$1300_1038_PNG$",
+                os: "Android OS",
+                _createdOn: 1701183313033,
+                _id: "371e91a9-b76e-4c10-a5d7-5baeb2fa1969"
+            },
+            "7cc99037-97eb-4af0-a041-4cd487c72cd7": {
+                _ownerId: "847ec027-f659-4086-8032-5173e8f9c87a",
+                type: "Телефон",
+                model: "Samsung A54",
+                year: "2023",
+                description: "Смартфон Samsung Galaxy A54, 128GB, 8GB RAM, 5G, Awesome Graphite. Продукт със следи от употреба, опаковка в добро състояние, фини драскотини по екрана, фини драскотини на гърба, фини драскотини по ръбовете, използвани аксесоари",
+                price: "639",
+                img: "https://s13emagst.akamaized.net/products/53851/53850764/images/res_8f935a1203d109bcdd68aa63c5fd0715.png?width=450&height=450&hash=268ED8AED3B4D228911CD782299E975D",
+                os: "Android OS",
+                _createdOn: 1701811504728,
+                _id: "7cc99037-97eb-4af0-a041-4cd487c72cd7"
+            }
+        },
+        purchases: {
+            "554625b8-dc67-4923-a1ca-549d32bcdb8a": {
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                productId: "371e91a9-b76e-4c10-a5d7-5baeb2fa1416",
+                userId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                _createdOn: 1701811882894,
+                _id: "554625b8-dc67-4923-a1ca-549d32bcdb8a"
+            }
         },
     };
     var rules$1 = {
-    	users: {
-    		".create": false,
-    		".read": [
-    			"Owner"
-    		],
-    		".update": false,
-    		".delete": false
-    	},
-    	members: {
-    		".update": "isOwner(user, get('teams', data.teamId))",
-    		".delete": "isOwner(user, get('teams', data.teamId)) || isOwner(user, data)",
-    		"*": {
-    			teamId: {
-    				".update": "newData.teamId = data.teamId"
-    			},
-    			status: {
-    				".create": "newData.status = 'pending'"
-    			}
-    		}
-    	}
+        users: {
+            ".create": false,
+            ".read": [
+                "Owner"
+            ],
+            ".update": false,
+            ".delete": false
+        },
+        members: {
+            ".update": "isOwner(user, get('teams', data.teamId))",
+            ".delete": "isOwner(user, get('teams', data.teamId)) || isOwner(user, data)",
+            "*": {
+                teamId: {
+                    ".update": "newData.teamId = data.teamId"
+                },
+                status: {
+                    ".create": "newData.status = 'pending'"
+                }
+            }
+        }
     };
     var settings = {
-    	identity: identity,
-    	protectedData: protectedData,
-    	seedData: seedData,
-    	rules: rules$1
+        identity: identity,
+        protectedData: protectedData,
+        seedData: seedData,
+        rules: rules$1
     };
 
     const plugins = [
