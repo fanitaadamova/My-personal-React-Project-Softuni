@@ -18,7 +18,11 @@ Used a Softuni Practice server for back-end.
 - Link to repository with deployed version code - https://github.com/fanitaadamova/Tech-site-version-with-deploy
 - Used:
   - Vercel for the frontend deployment;
-  - Render for the backend deployment;
+  - Render for the backend deployment.
+
+## Project Structure and Architecture
+
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/7b72e65c-3214-406e-a016-da5b45126ab9)
 
     
 ## Site overview 
@@ -42,7 +46,7 @@ image.png
 ### Home page
 Public page for all users.
 
-Showes baner - products by category (there are 5 categories - each button goes to the page with products from the corresponding category). 
+The baner contains products by category (there are 5 categories - each button goes to the page with products from the corresponding category). 
 
 
 
@@ -63,8 +67,8 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 
 ##### CRUD OPERATIONS
 
- - GET to endpoint HOST/data/:collection
-   The service return array of all products in technique collection;
+ - GET to endpoint HOST/data/:collection                     
+   The service returns array of all products in technique collection.
 
  - GET to endpoint HOST/data/:collection?where=type={match}                      
        *for example: GET  http://localhost:3030/data/technique?where=type="Лаптоп"
@@ -73,11 +77,11 @@ The button "Виж всички оферти" goes to Catalog page with all ads.
 
 ### Login page
 
-The login form expects as input: email and password.
+The login form expects as input: email and password. Button is disabled, if some of fiels is empty or does not meet the conditions.
 Valid credentials in this case are:
  -	The valid Email address must be example@example.example.
  -	Password should be at least 5 symbols as well.
- -	Button is disabled, if some of fiels is empty or does not meet the conditions.
+
    
   ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2495792e-d634-4d71-ba3a-1b6ad251c9b4)
 
@@ -85,14 +89,14 @@ Valid credentials in this case are:
 
 ### Register page
 
-The register form expects as input: username, email, mobile number, password and repeat password.
+The register form expects as input: username, email, mobile number, password and repeat password. Button is disabled, if some of fiels is empty or does not meet the conditions.
 Valid inputs in this case are:
  - 	Username should be at least 5 symbols as well.
  - 	The valid Email address must be example@example.example
  - 	Password should be at least 5 symbols as well
  - 	Repeat password and password must be matched.
  - 	All fields must be requered.
- -    Button is disabled, if some of fiels is empty or does not meet the conditions.
+
    
 
  ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/73c49041-9314-44e4-a049-bc2540fcd4c3)
@@ -131,6 +135,12 @@ The "Създай" button should be disabled if the inputs are NOT valid.
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/95d8eb3c-c722-42d3-98ce-d088bc5aeea0)
 
 
+##### CRUD OPERATIONS
+
+ - POST to endpoint HOST/data/:collection                               
+   The request will create new entry. ID will be generated automatically and will be included in the returned object. 
+
+   
 ### Profile page
 Page only for logged in users
 Profile page contains:
@@ -144,6 +154,13 @@ Profile page contains:
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/c754ebe0-2f66-424e-abf7-10b9970b7b15)
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2469109a-946d-445b-bd5d-f847e7b0e861)
 
+
+##### CRUD OPERATIONS
+
+ - GET to endpoint HOST/data/:collection?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc                  
+   The service returns array of all created products in technique collection by userId.
+ - GET to endpoint HOST/data/:collection?${query}           
+   The service returns array of all bought products in technique collection by userId.
 
 ### Search page
 Public page for all users.
@@ -163,7 +180,6 @@ The page there are two parts - public and private(for logged in users).
 
 
 
-
 2. Private part - only for logged in users:   
    - Can buy every product only once. If the product was already bought, the user wiil see message;
    - Can posts a new comment;
@@ -171,13 +187,25 @@ The page there are two parts - public and private(for logged in users).
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/9fad5850-9694-4dfa-9e61-356f4ad4db2d)
 
+##### CRUD OPERATIONS
 
+ - GET to endpoint HOST/data/:collection/:id                               
+   The service returns entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
 
+- GET to endpoint HOST/data/:collection?${query}
+  The service returns array of all comments in comments collection by productId.
+
+- POST to endpoint HOST/data/:collection                               
+  The request will create new entry in comments collection.
 
 #### Product deatails - delete product
 
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/640f7d18-09ee-4530-a94a-d0f08ba23188)
 
+
+##### CRUD OPERATIONS
+
+ - DELETE to endpoint HOST/data/:collection/:id         
 
 
 #### Product deatails - edit information
@@ -185,5 +213,24 @@ The page there are two parts - public and private(for logged in users).
 ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/7a627883-5299-4b82-b10e-b4d085de4ced)
 
 
+##### CRUD OPERATIONS
+
+ - GET to endpoint HOST/data/:collection/:id                               
+   The service returns entry matching the given ID. Will return 404 if collection or entry do not exist - in that case will navigatе to not found page.
+ - PUT to endpoint HOST/data/:collection/:id                                          
+   This request requires authorization and to update a single entry (the existing entry will be replaced). Only the owner of the resource can edit it.
+
+
+## Security and Guards
+ - Guеsts guard                                
+   The application requires the user to be authenticated in order to create classifieds for sale of equipment, post 
+   comments or make purchases.
+
+ - Auth guard                       
+   The application redirects to home page when already authenticated user tries to access login, register, profile or add new product page.
+   
+ - Undefined routes                        
+   Not fond page is implemented to handle undefined routes.
+   ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/b301f662-8d69-4cd9-a0f3-6ccf165ca025)
 
 
