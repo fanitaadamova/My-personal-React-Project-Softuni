@@ -117,6 +117,7 @@ Valid inputs in this case are:
 ### DEMO USERS
   - peter@abv.bg       pass: 123456;
   - george@abv.bg      pass: 123456;
+  - viktor@abv.bg      pass: 123456;
 
 
 
