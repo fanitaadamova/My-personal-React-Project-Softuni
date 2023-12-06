@@ -14,9 +14,10 @@ Used a Softuni Practice server for back-end.
    - open http://localhost:5173 to view it in the browser.
 
 ## Deployment
+The application is successfully deployed, allowing users to experience its features and functionalities in action.
 - Project DEMO - https://tech-site-six.vercel.app
 - Link to repository with deployed version code - https://github.com/fanitaadamova/Tech-site-version-with-deploy
-- Used:
+- Deployment Platforms Used:
   - Vercel for the frontend deployment;
   - Render for the backend deployment.
 
@@ -117,6 +118,7 @@ Valid inputs in this case are:
 ### DEMO USERS
   - peter@abv.bg       pass: 123456;
   - george@abv.bg      pass: 123456;
+  - viktor@abv.bg      pass: 123456;
 
 
 
@@ -233,4 +235,10 @@ The page there are two parts - public and private(for logged in users).
    Not fond page is implemented to handle undefined routes.
    ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/b301f662-8d69-4cd9-a0f3-6ccf165ca025)
 
-
+## Back-end Softuni Practice 
+server folder - server.js
+ - protectedData - users collection
+ - seedData - 3 collections:
+   - technique;
+   - comments;
+   - purchases.
