@@ -41,7 +41,8 @@ image.png
 
 
 ### Every page contains footer
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/142d0bf7-6f63-4f30-9231-f6e3ce09eea8)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/56c9dc8d-7d29-4119-9c98-8fe0b92f8f82)
+
 
 
 ### Home page
