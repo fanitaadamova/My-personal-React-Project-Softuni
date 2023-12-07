@@ -235,6 +235,9 @@ The page there are two parts - public and private(for logged in users).
    Not fond page is implemented to handle undefined routes.
    ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/b301f662-8d69-4cd9-a0f3-6ccf165ca025)
 
+### Used additional lybraries
+ - bootstrap
+
 ## Back-end Softuni Practice 
 server folder - server.js
  - protectedData - users collection
