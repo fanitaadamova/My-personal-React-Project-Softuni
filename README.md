@@ -1,7 +1,7 @@
 # Тech-site
 
-This is a WEB application using React for the front-end - a site for posting classifieds for technique.
-Used a Softuni Practice server for back-end.
+This is a WEB application using React for the front-end - a site for posting technical classifieds. All visitors to the site can view the ads and the published comments. Only registered users can take advantage of the full functionality of the application - post ads and make purchases (if they are not the owner of the one).
+Used Softuni Practice server for back-end.
 
 ## Steps for local instalation and review:
 1. Clone the repository: https://github.com/fanitaadamova/My-personal-React-Project-Softuni.git
