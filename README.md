@@ -239,10 +239,10 @@ The page there are two parts - public and private(for logged in users).
 
 ### Responsive design 
 #### Mobile screenshots
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/d9e159cd-3845-4815-bdaf-69bd31e83ddd)
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/07a84c65-4ae1-4a47-9745-a22a3ada9741)
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2ceefa8e-8b27-42ab-b10b-00f18b3f4ab2)
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/f995fd7b-f33e-44be-9744-201a30e22195)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/d9e159cd-3845-4815-bdaf-69bd31e83ddd)              
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/07a84c65-4ae1-4a47-9745-a22a3ada9741)               
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2ceefa8e-8b27-42ab-b10b-00f18b3f4ab2)                     
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/f995fd7b-f33e-44be-9744-201a30e22195)                       
 
 
 
