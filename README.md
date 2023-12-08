@@ -1,4 +1,4 @@
-# Тech-site
+# Tech Shop
 
 This is a WEB application using React for the front-end - a site for technical classifieds. Used Softuni Practice server for back-end.               
 All visitors to the site can view the ads and the published comments. Only registered users can take advantage of the full functionality of the application - post ads and make purchases (if they are not the owner of the one).
