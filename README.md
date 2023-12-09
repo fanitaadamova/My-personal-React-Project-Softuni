@@ -1,7 +1,8 @@
-# Тech-site
+# Tech Shop
 
-This is a WEB application using React for the front-end - a site for posting classifieds for technique.
-Used a Softuni Practice server for back-end.
+This is a WEB application using React for the front-end - a site for technical classifieds. Used Softuni Practice server for back-end.               
+All visitors to the site can view the ads and the published comments. Only registered users can take advantage of the full functionality of the application - post ads, post comments and make purchases (if they are not the owner of the one).
+
 
 ## Steps for local instalation and review:
 1. Clone the repository: https://github.com/fanitaadamova/My-personal-React-Project-Softuni.git
@@ -41,7 +42,8 @@ image.png
 
 
 ### Every page contains footer
-![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/142d0bf7-6f63-4f30-9231-f6e3ce09eea8)
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/56c9dc8d-7d29-4119-9c98-8fe0b92f8f82)
+
 
 
 ### Home page
@@ -234,6 +236,16 @@ The page there are two parts - public and private(for logged in users).
  - Undefined routes                        
    Not fond page is implemented to handle undefined routes.
    ![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/b301f662-8d69-4cd9-a0f3-6ccf165ca025)
+
+### Responsive design 
+#### Mobile screenshots
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/d9e159cd-3845-4815-bdaf-69bd31e83ddd)              
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/07a84c65-4ae1-4a47-9745-a22a3ada9741)               
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/2ceefa8e-8b27-42ab-b10b-00f18b3f4ab2)                     
+![image](https://github.com/fanitaadamova/My-personal-React-Project-Softuni/assets/113979211/f995fd7b-f33e-44be-9744-201a30e22195)                       
+
+
+
 
 ### Used additional lybraries
  - bootstrap
