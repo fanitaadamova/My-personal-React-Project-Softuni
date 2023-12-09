@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from './DeleteModal.module.css';
 
 export default function DeleteModal({
@@ -34,4 +35,4 @@ export default function DeleteModal({
         </div>
     );
 
-};
+}
