@@ -89,7 +89,7 @@ export default function ProductDetails() {
 
     let isOwner = false;
     let isLogdin = false;
-    
+
 
     if (auth) {
         if (productDetails._ownerId === auth._id) {
@@ -101,22 +101,21 @@ export default function ProductDetails() {
 
 
     // ADD Comments
-    const addCommentHandler = async (values) => {
+    const addCommentHandler = async () => {
         const newComment = await commentAPI.create(productId, values.comment);
 
         const email = auth.email;
         newComment.owner = { email };
 
-        dispatch({ 
+        dispatch({
             type: 'ADD_COMMENT',
-             payload: newComment
-             });
+            payload: newComment
+        });
 
         values.comment = '';
     };
 
     const { values, onChange, onSubmit } = useForm(addCommentHandler, formInitialState);
-
 
 
     return (
@@ -208,7 +207,10 @@ export default function ProductDetails() {
                             value={values.comment}
                             onChange={onChange}
                             placeholder="Коментар......"></textarea>
-                        <input disabled={values.comment == ''} className={styles.btn_submit} type="submit" value="Изпрати" />
+                        <input disabled={values.comment == ''}
+                            className={styles.btn_submit}
+                            type="submit"
+                            value="Изпрати" />
                     </form>
                 </section>
             )}
