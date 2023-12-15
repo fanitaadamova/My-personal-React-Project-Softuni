@@ -19,7 +19,7 @@ The application is successfully deployed, allowing users to experience its featu
 - Project DEMO - https://tech-site-six.vercel.app
 - Link to repository with deployed version code - https://github.com/fanitaadamova/Tech-site-version-with-deploy
 - Deployment Platforms Used:
-  - Vercel for the frontend deployment;
+  - The backend of Tech Shop is deployed on <a href="https://vercel.com/" rel="nofollow">Vercel</a>. The backend handles the core functionalities, including user authentication.;
   - Render for the backend deployment.
 
 ## Project Structure and Architecture
