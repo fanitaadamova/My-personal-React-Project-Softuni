@@ -232,6 +232,9 @@ The page there are two parts - public and private(for logged in users).
 
  - Auth guard                       
    The application redirects to home page when already authenticated user tries to access login, register, profile or add new product page.
+
+ - Error boundary
+   Catch JavaScript errors anywhere in the child component tree, log those errors, and display a fallback UI instead of crashing the whole app
    
  - Undefined routes                        
    Not fond page is implemented to handle undefined routes.
@@ -248,7 +251,8 @@ The page there are two parts - public and private(for logged in users).
 
 
 ### Used additional lybraries
- - bootstrap
+ - Bootstrap - Used for styling of some page in the application (in the other used own HTML and CSS).
+ - React router dom - Used for handling the routing of the application.
 
 ## Back-end Softuni Practice 
 server folder - server.js
