@@ -19,8 +19,8 @@ The application is successfully deployed, allowing users to experience its featu
 - Project DEMO - https://tech-site-six.vercel.app
 - Link to repository with deployed version code - https://github.com/fanitaadamova/Tech-site-version-with-deploy
 - Deployment Platforms Used:
-  - Vercel for the frontend deployment;
-  - Render for the backend deployment.
+  - Front-End Deployment <a href="https://vercel.com/" rel="nofollow">Vercel</a>. The front-end of my application is deployed using Vercel, a powerful platform for effortlessly deploying React applications. This ensures a reliable and performant hosting environment for our user-facing interface;
+  - Backend Deployment <a href="https://render.com/" rel="nofollow">Render</a>. For the backend deployment, I used leveraged Render, a robust platform capable of hosting and managing server-side components. Render ensures the smooth functioning and accessibility of my backend infrastructure.
 
 ## Project Structure and Architecture
 
@@ -232,6 +232,9 @@ The page there are two parts - public and private(for logged in users).
 
  - Auth guard                       
    The application redirects to home page when already authenticated user tries to access login, register, profile or add new product page.
+
+ - Error boundary
+   Catch JavaScript errors anywhere in the child component tree, log those errors, and display a fallback UI instead of crashing the whole app
    
  - Undefined routes                        
    Not fond page is implemented to handle undefined routes.
@@ -248,7 +251,8 @@ The page there are two parts - public and private(for logged in users).
 
 
 ### Used additional lybraries
- - bootstrap
+ - Bootstrap - Used for styling of some page in the application (in the other used own HTML and CSS).
+ - React router dom - Used for handling the routing of the application.
 
 ## Back-end Softuni Practice 
 server folder - server.js
